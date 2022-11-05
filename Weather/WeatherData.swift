@@ -30,33 +30,33 @@ class WeatherData: ObservableObject
         {
             do
             {
-                place = "Tacoma WA"
-                if let forcast = await WeatherData.shared.weather(for:place)
+                place = "Tacoma Washington USA"
+                if let forecast = await WeatherData.shared.weather(for:place)
                 {
-                    current = forcast
+                    current = forecast
                     
                     print("=====")
                     print(" location     : \(place)")
-                    print(" temp         : \(forcast.temperature.converted(to: .fahrenheit).formatted())")
-                    print(" feels like   : \(forcast.apparentTemperature.converted(to: .fahrenheit).formatted())")
-                    print(" cloudcover   : \(forcast.cloudCover)%")
-                    print(" condition    : \(forcast.condition)")
-                    print(" humidity     : \(forcast.humidity)%")
-                    print(" pressure     : \(forcast.pressure.converted(to: .inchesOfMercury).formatted())")
-                    print(" pressureTrend: \(forcast.pressureTrend)")
-                    print(" symbol       : \(forcast.symbolName)")
-                    print(" wind dir     : \(forcast.wind.compassDirection) \(forcast.wind.direction)")
-                    print(" wind speed   : \(forcast.wind.speed.formatted())")
-                    if let gust = forcast.wind.gust
+                    print(" temp         : \(forecast.temperature.converted(to: .fahrenheit).formatted())")
+                    print(" feels like   : \(forecast.apparentTemperature.converted(to: .fahrenheit).formatted())")
+                    print(" cloudcover   : \(forecast.cloudCover)%")
+                    print(" condition    : \(forecast.condition)")
+                    print(" humidity     : \(forecast.humidity)%")
+                    print(" pressure     : \(forecast.pressure.converted(to: .inchesOfMercury).formatted())")
+                    print(" pressureTrend: \(forecast.pressureTrend)")
+                    print(" symbol       : \(forecast.symbolName)")
+                    print(" wind dir     : \(forecast.wind.compassDirection) \(forecast.wind.direction)")
+                    print(" wind speed   : \(forecast.wind.speed.formatted())")
+                    if let gust = forecast.wind.gust
                     {
                         print(" wind gust    : \(gust.formatted())")
                     }
-                    print(" uvIndex      : \(forcast.uvIndex.category)")
-                    print(" visibility   : \(forcast.visibility.converted(to: .miles).formatted())")
-                    print(" dewPoint     : \(forcast.dewPoint.converted(to: .fahrenheit).formatted())")
+                    print(" uvIndex      : \(forecast.uvIndex.category)")
+                    print(" visibility   : \(forecast.visibility.converted(to: .miles).formatted())")
+                    print(" dewPoint     : \(forecast.dewPoint.converted(to: .fahrenheit).formatted())")
                 }
                 
-                try await Task.sleep(nanoseconds: 5000000000)
+                try await Task.sleep(nanoseconds: 500000000000)
             }
         }
     }
@@ -69,10 +69,12 @@ class WeatherData: ObservableObject
         {
             let placemark = try await geocoder.geocodeAddressString(address)
             
+            
+            print("Placemark: \(placemark[0])")
             if let location = placemark[0].location
             {
-                let forcast = try await self.service.weather(for:location ,including: .current)
-                return forcast
+                let forecast = try await self.service.weather(for:location ,including: .current)
+                return forecast
             }
             else
             {
@@ -81,6 +83,7 @@ class WeatherData: ObservableObject
         }
         catch
         {
+            print("geocode error: \(error)")
             return nil
         }
     }
