@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct WeatherApp: App
 {
-    @StateObject private var weatherData = WeatherData.shared
+    @StateObject private var weatherData = MyWeather.shared
 
     var body: some Scene
     {
