@@ -10,18 +10,10 @@ import WeatherKit
 import MapKit
 
 
-struct TheWeather
-{
-    let currentweather: CurrentWeather
-}
-
-
 @MainActor
 class MyWeather: ObservableObject
 {
     static let shared = MyWeather()
-    
-    private let service = WeatherService.shared
     
     @Published var theweather : Weather?
     @Published var place = "Home"
@@ -36,10 +28,10 @@ class MyWeather: ObservableObject
     {
         Task
         {
-            do
+            while(true)
             {
-                place = "Tacoma Washington USA"
-                if let weather = await MyWeather.shared.weather(for:place)
+                place = "Tacoma WA"
+                if let weather = await MyWeather.shared.lookUpWeather(for:place)
                 {
                     theweather = weather
                     
@@ -70,16 +62,17 @@ class MyWeather: ObservableObject
                     {
                         print(" low           : \(daily.lowTemperature.converted(to: .fahrenheit).formatted())")
                         print(" high          : \(daily.highTemperature.converted(to: .fahrenheit).formatted())")
-                        print(" precip chance : \(daily.precipitationChance * 100)% chance of \(daily.precipitation)")
+                        print(" precip chance : \(daily.precipitationChance * 100)% chance of \(daily.precipitation.description)")
                     }
                 }
                 
-                try await Task.sleep(nanoseconds: 5000000000)
+                try await Task.sleep(for:.seconds(60 * 5))
             }
         }
     }
     
-    func weather(for address: String) async -> Weather?
+    
+    func lookUpWeather(for address: String) async -> Weather?
     {
         let geocoder = CLGeocoder()
         
@@ -87,15 +80,14 @@ class MyWeather: ObservableObject
         {
             let placemark = try await geocoder.geocodeAddressString(address)
             
-            
-            print("Placemark: \(placemark[0])")
             if let location = placemark[0].location
             {
-                let weather = try await self.service.weather(for:location)
+                let weather = try await WeatherService.shared.weather(for:location)
                 return weather
             }
             else
             {
+                print("Failed getting location \(address)")
                 return nil
             }
         }

@@ -12,6 +12,10 @@
 		AE9391D92860E2E7002ED6AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE9391D82860E2E7002ED6AE /* Assets.xcassets */; };
 		AE9391DC2860E2E7002ED6AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE9391DB2860E2E7002ED6AE /* Preview Assets.xcassets */; };
 		AE9391E42860E5D2002ED6AE /* MyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9391E32860E5D2002ED6AE /* MyWeather.swift */; };
+		AECC3D4F291824CF00DC0636 /* TemperatureBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC3D4E291824CF00DC0636 /* TemperatureBlock.swift */; };
+		AECC3D512918283D00DC0636 /* WindBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC3D502918283D00DC0636 /* WindBlock.swift */; };
+		AECC3D5329182A4E00DC0636 /* PercipBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC3D5229182A4E00DC0636 /* PercipBlock.swift */; };
+		AECC3D552918572C00DC0636 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC3D542918572C00DC0636 /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		AE9391DB2860E2E7002ED6AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AE9391DD2860E2E7002ED6AE /* Weather.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Weather.entitlements; sourceTree = "<group>"; };
 		AE9391E32860E5D2002ED6AE /* MyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWeather.swift; sourceTree = "<group>"; };
+		AECC3D4E291824CF00DC0636 /* TemperatureBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureBlock.swift; sourceTree = "<group>"; };
+		AECC3D502918283D00DC0636 /* WindBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindBlock.swift; sourceTree = "<group>"; };
+		AECC3D5229182A4E00DC0636 /* PercipBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercipBlock.swift; sourceTree = "<group>"; };
+		AECC3D542918572C00DC0636 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +63,11 @@
 			isa = PBXGroup;
 			children = (
 				AE9391E32860E5D2002ED6AE /* MyWeather.swift */,
+				AECC3D542918572C00DC0636 /* Settings.swift */,
 				AE9391D62860E2E7002ED6AE /* ContentView.swift */,
+				AECC3D4E291824CF00DC0636 /* TemperatureBlock.swift */,
+				AECC3D502918283D00DC0636 /* WindBlock.swift */,
+				AECC3D5229182A4E00DC0636 /* PercipBlock.swift */,
 				AE9391D42860E2E7002ED6AE /* WeatherApp.swift */,
 				AE9391D82860E2E7002ED6AE /* Assets.xcassets */,
 				AE9391DD2860E2E7002ED6AE /* Weather.entitlements */,
@@ -142,9 +154,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AECC3D5329182A4E00DC0636 /* PercipBlock.swift in Sources */,
 				AE9391D72860E2E7002ED6AE /* ContentView.swift in Sources */,
+				AECC3D512918283D00DC0636 /* WindBlock.swift in Sources */,
 				AE9391E42860E5D2002ED6AE /* MyWeather.swift in Sources */,
+				AECC3D552918572C00DC0636 /* Settings.swift in Sources */,
 				AE9391D52860E2E7002ED6AE /* WeatherApp.swift in Sources */,
+				AECC3D4F291824CF00DC0636 /* TemperatureBlock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

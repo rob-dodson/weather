@@ -10,13 +10,13 @@ import SwiftUI
 @main
 struct WeatherApp: App
 {
-    @StateObject private var weatherData = MyWeather.shared
+    @StateObject private var myweather : MyWeather = MyWeather.shared
 
     var body: some Scene
     {
         WindowGroup
         {
-            ContentView(weather: weatherData)
+            ContentView(myweather: myweather).environmentObject(Settings())
         }
     }
 }
