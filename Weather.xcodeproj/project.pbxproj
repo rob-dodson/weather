@@ -16,6 +16,7 @@
 		AECC3D512918283D00DC0636 /* WindBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC3D502918283D00DC0636 /* WindBlock.swift */; };
 		AECC3D5329182A4E00DC0636 /* PercipBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC3D5229182A4E00DC0636 /* PercipBlock.swift */; };
 		AECC3D552918572C00DC0636 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC3D542918572C00DC0636 /* Settings.swift */; };
+		AECC3D57291AAEE200DC0636 /* SunMoonBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC3D56291AAEE200DC0636 /* SunMoonBlock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		AECC3D502918283D00DC0636 /* WindBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindBlock.swift; sourceTree = "<group>"; };
 		AECC3D5229182A4E00DC0636 /* PercipBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercipBlock.swift; sourceTree = "<group>"; };
 		AECC3D542918572C00DC0636 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		AECC3D56291AAEE200DC0636 /* SunMoonBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunMoonBlock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				AECC3D4E291824CF00DC0636 /* TemperatureBlock.swift */,
 				AECC3D502918283D00DC0636 /* WindBlock.swift */,
 				AECC3D5229182A4E00DC0636 /* PercipBlock.swift */,
+				AECC3D56291AAEE200DC0636 /* SunMoonBlock.swift */,
 				AE9391D42860E2E7002ED6AE /* WeatherApp.swift */,
 				AE9391D82860E2E7002ED6AE /* Assets.xcassets */,
 				AE9391DD2860E2E7002ED6AE /* Weather.entitlements */,
@@ -161,6 +164,7 @@
 				AECC3D552918572C00DC0636 /* Settings.swift in Sources */,
 				AE9391D52860E2E7002ED6AE /* WeatherApp.swift in Sources */,
 				AECC3D4F291824CF00DC0636 /* TemperatureBlock.swift in Sources */,
+				AECC3D57291AAEE200DC0636 /* SunMoonBlock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

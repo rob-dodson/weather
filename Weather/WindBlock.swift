@@ -35,7 +35,7 @@ struct WindBlock: View
                     .font(.title3)
                 
                 if let gust = current.wind.gust
-               {
+                {
                     Text("Gusts \(gust.formatted())")
                         .foregroundColor(settings.tintColor)
                         .font(.system(size: 10.0))

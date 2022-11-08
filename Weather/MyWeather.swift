@@ -18,6 +18,7 @@ class MyWeather: ObservableObject
     @Published var theweather : Weather?
     @Published var place = "Home"
     
+    
     init()
     {
         getWeather()
@@ -87,7 +88,7 @@ class MyWeather: ObservableObject
             }
             else
             {
-                print("Failed getting location \(address)")
+                print("Failed getting location for \(address)")
                 return nil
             }
         }

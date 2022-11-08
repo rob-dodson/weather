@@ -18,7 +18,7 @@ struct PrecipBlock: View
     {
         VStack(alignment: .center, spacing: 5.0)
         {
-            if let current = myweather.theweather?.currentWeather
+            if let _ = myweather.theweather?.currentWeather
             {
                 let daily = myweather.theweather?.dailyForecast[0]
                 let chance = Int(daily!.precipitationChance * 100)
@@ -33,8 +33,6 @@ struct PrecipBlock: View
                         .foregroundColor(settings.titleColor)
                         .font(.title2)
                 }
-                
-                   
                     
                 Text("Chance of \(daily!.precipitation.description)")
                     .foregroundColor(settings.tintColor)

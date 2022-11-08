@@ -21,7 +21,7 @@ class Settings: Combine.ObservableObject {
         }
     }
     
-    var titleColor = Color.gray
+    var titleColor = Color(red: 0.8, green: 0.8, blue: 0.3)
     {
         willSet
         {
