@@ -27,39 +27,31 @@ struct TemperatureBlock: View
                 {
                     Image(systemName: current.symbolName)
                         .imageScale(.large)
-                        .foregroundColor(settings.tintColor)
                     
                     Text("\(myweather.place)")
-                        .foregroundColor(settings.titleColor)
                         .font(.system(size: 50.0))
+                        .foregroundColor(settings.titleColor)
                 }
                 
                 Text("\(current.temperature.formatted())")
-                    .foregroundColor(settings.tintColor)
                     .font(.system(size: 40.0))
                 
                 Text("Feels Like \(current.apparentTemperature.formatted())")
-                    .foregroundColor(settings.tintColor)
-                    .font(.title3)
                 
                 if let daily = myweather.theweather?.dailyForecast[0]
                 {
                     HStack(spacing:15.0)
                     {
                         Text("Low \(daily.lowTemperature.formatted())")
-                            .foregroundColor(settings.tintColor)
-                            .font(.title3)
                         Text("High \(daily.highTemperature.formatted())")
-                            .foregroundColor(settings.tintColor)
-                            .font(.title3)
                     }
                     Text("\(current.condition.description)")
-                        .foregroundColor(settings.tintColor)
-                        .font(.title3)
                 }
             }
         }
         .padding()
+        .font(.title3)
+        .foregroundColor(settings.tintColor)
         .background(settings.blockColor)
         .cornerRadius(15)
         .shadow(radius: 10)

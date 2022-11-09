@@ -15,7 +15,7 @@ struct ContentView: View
     
     var body: some View
     {
-        VStack (alignment:.leading,spacing:10.0)
+        VStack (alignment:.center,spacing:10.0)
         {
             TemperatureBlock(myweather: myweather)
             
@@ -23,10 +23,20 @@ struct ContentView: View
             {
                 WindBlock(myweather: myweather)
                 PrecipBlock(myweather: myweather)
+            }
+            
+            HStack
+            {
                 SunMoonBlock(myweather: myweather)
+                PressureBlock(myweather: myweather)
+            }
+            HStack
+            {
+                HumidityBlock(myweather: myweather)
             }
         }
     }
+    
 }
 
 

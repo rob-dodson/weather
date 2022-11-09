@@ -63,7 +63,10 @@ class MyWeather: ObservableObject
                     {
                         print(" low           : \(daily.lowTemperature.converted(to: .fahrenheit).formatted())")
                         print(" high          : \(daily.highTemperature.converted(to: .fahrenheit).formatted())")
-                        print(" precip chance : \(daily.precipitationChance * 100)% chance of \(daily.precipitation.description)")
+                        if (daily.precipitation != .none)
+                        {
+                            print(" precip chance : \(daily.precipitationChance * 100)% chance of \(daily.precipitation.description)")
+                        }
                     }
                 }
                 

@@ -21,28 +21,37 @@ struct PrecipBlock: View
             if let _ = myweather.theweather?.currentWeather
             {
                 let daily = myweather.theweather?.dailyForecast[0]
-                let chance = Int(daily!.precipitationChance * 100)
+                
                 
                 HStack(spacing:10.0)
                 {
                     Image(systemName: "cloud.rain")
                         .imageScale(.medium)
-                        .foregroundColor(settings.tintColor)
                     
                     Text("Precipitation")
                         .foregroundColor(settings.titleColor)
                         .font(.title2)
                 }
+                
+                
+                let preciptype = daily!.precipitation
+                if preciptype != .none
+                {
+                    let chance = Int(daily!.precipitationChance * 100)
                     
-                Text("Chance of \(daily!.precipitation.description)")
-                    .foregroundColor(settings.tintColor)
-                    .font(.title3)
-                Text("\(chance)%")
-                    .foregroundColor(settings.tintColor)
-                    .font(.title3)
+                    Text("Chance of \(daily!.precipitation.rawValue )")
+                    Text("\(chance)%")
+                }
+                else
+                {
+                    Text("None")
+                }
+                    
             }
         }
         .padding()
+        .font(.title3)
+        .foregroundColor(settings.tintColor)
         .background(settings.blockColor)
         .cornerRadius(15)
         .shadow(radius: 10)

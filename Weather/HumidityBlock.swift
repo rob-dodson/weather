@@ -8,11 +8,12 @@
 import SwiftUI
 import WeatherKit
 
-struct WindBlock: View
+struct HumidityBlock: View
 {
     @ObservedObject var myweather: MyWeather
     @EnvironmentObject var settings: Settings
 
+    
     var body: some View
     {
         VStack(alignment: .center, spacing: 5.0)
@@ -21,29 +22,30 @@ struct WindBlock: View
             {
                 HStack(spacing:10.0)
                 {
-                    Image(systemName: "wind")
+                    Image(systemName: "humidity")
                         .imageScale(.medium)
-                    
-                    Text("Wind")
-                        .foregroundColor(settings.titleColor)
+                    Text("Humidity")
                         .font(.title2)
                 }
+                .foregroundColor(settings.titleColor)
                 
-                Text("\(current.wind.compassDirection.description) @ \(current.wind.speed.formatted())")
-                    .font(.title3)
-                
-                if let gust = current.wind.gust
+                HStack
                 {
-                    Text("Gusts \(gust.formatted())")
-                        .font(.system(size: 10.0))
+                    let humidstr = NSString(format:"%.0f", current.humidity * 100)
+
+                    Text("humidity \(humidstr)%")
+                    Text("dew point  \(current.dewPoint.converted(to: .fahrenheit).formatted())")
+                    Text("visibility \(current.visibility.converted(to: .miles).formatted())")
                 }
+                .foregroundColor(settings.tintColor)
+                .font(.title3)
+                        
             }
         }
         .padding()
-        .foregroundColor(settings.tintColor)
         .background(settings.blockColor)
         .cornerRadius(15)
-        .shadow(radius:10)
+        .shadow(radius: 10)
         .opacity(60.0)
     }
 }

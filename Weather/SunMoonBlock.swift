@@ -26,14 +26,13 @@ struct SunMoonBlock: View
                 {
                     Image(systemName: "sun.max")
                         .imageScale(.medium)
-                        .foregroundColor(settings.tintColor)
                     Image(systemName: "moon")
                         .imageScale(.medium)
-                        .foregroundColor(settings.tintColor)
-                    Text("Sun Moon")
+                    Text("Sun & Moon")
                         .foregroundColor(settings.titleColor)
                         .font(.title2)
                 }
+                .foregroundColor(settings.tintColor)
                 
                 if let sun = daily?.sun
                 {
@@ -44,12 +43,13 @@ struct SunMoonBlock: View
                             Text("Sun")
                             Image(systemName: "arrow.up")
                                 .imageScale(.small)
-                                .foregroundColor(settings.tintColor)
                             Text("\((sun.sunrise?.formatted(date: .omitted, time: .shortened) )!)")
+                            
                             Image(systemName: "arrow.down")
                                 .imageScale(.small)
-                                .foregroundColor(settings.tintColor)
+                            
                             Text("\((sun.sunset?.formatted(date: .omitted, time: .shortened))!)")
+                            
                             Text("UV: \(current.uvIndex.category.rawValue)")
                                 .font(.system(size: 10.0))
                         }
@@ -63,14 +63,18 @@ struct SunMoonBlock: View
                                 Text("Moon")
                                 Image(systemName: "arrow.up")
                                     .imageScale(.small)
-                                    .foregroundColor(settings.tintColor)
+                                
                                 Text("\((moon.moonrise?.formatted(date: .omitted, time: .shortened) )!)")
+                                
                                 Image(systemName: "arrow.down")
                                     .imageScale(.small)
-                                    .foregroundColor(settings.tintColor)
                                 Text("\((moon.moonset?.formatted(date: .omitted, time: .shortened))!)")
+                                
                                 Text("Phase: \(moon.phase.rawValue)")
                                     .font(.system(size: 10.0))
+                                
+                                Image(systemName: moon.phase.symbolName)
+                                    .imageScale(.small)
                             }
                             .foregroundColor(settings.tintColor)
                             .font(.title3)
