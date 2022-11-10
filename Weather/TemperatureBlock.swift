@@ -21,8 +21,6 @@ struct TemperatureBlock: View
         {
             if let current = myweather.theweather?.currentWeather
             {
-               
-                
                 HStack(spacing:10.0)
                 {
                     Image(systemName: current.symbolName)
@@ -32,6 +30,9 @@ struct TemperatureBlock: View
                         .font(.system(size: 50.0))
                         .foregroundColor(settings.titleColor)
                 }
+                
+                Text("\(current.date.formatted())")
+                    .font(.system(size: 10.0))
                 
                 Text("\(current.temperature.formatted())")
                     .font(.system(size: 40.0))

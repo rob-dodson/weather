@@ -19,6 +19,7 @@
 		AECC3D57291AAEE200DC0636 /* SunMoonBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC3D56291AAEE200DC0636 /* SunMoonBlock.swift */; };
 		AECC3D80291C594400DC0636 /* PressureBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC3D7F291C594400DC0636 /* PressureBlock.swift */; };
 		AECC3D82291C612F00DC0636 /* HumidityBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC3D81291C612F00DC0636 /* HumidityBlock.swift */; };
+		AECC3D86291C95E900DC0636 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC3D85291C95E900DC0636 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		AECC3D56291AAEE200DC0636 /* SunMoonBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunMoonBlock.swift; sourceTree = "<group>"; };
 		AECC3D7F291C594400DC0636 /* PressureBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureBlock.swift; sourceTree = "<group>"; };
 		AECC3D81291C612F00DC0636 /* HumidityBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HumidityBlock.swift; sourceTree = "<group>"; };
+		AECC3D85291C95E900DC0636 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				AE9391E32860E5D2002ED6AE /* MyWeather.swift */,
+				AECC3D85291C95E900DC0636 /* Location.swift */,
 				AECC3D542918572C00DC0636 /* Settings.swift */,
 				AE9391D62860E2E7002ED6AE /* ContentView.swift */,
 				AECC3D4E291824CF00DC0636 /* TemperatureBlock.swift */,
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AECC3D82291C612F00DC0636 /* HumidityBlock.swift in Sources */,
+				AECC3D86291C95E900DC0636 /* Location.swift in Sources */,
 				AECC3D5329182A4E00DC0636 /* PercipBlock.swift in Sources */,
 				AE9391D72860E2E7002ED6AE /* ContentView.swift in Sources */,
 				AECC3D80291C594400DC0636 /* PressureBlock.swift in Sources */,
@@ -310,6 +314,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Display Message Location Always and When In Use Usage Description";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Display Message for Location When In Use Usage Description";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -342,6 +348,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Display Message Location Always and When In Use Usage Description";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Display Message for Location When In Use Usage Description";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

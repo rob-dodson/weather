@@ -8,6 +8,7 @@
 import Foundation
 import WeatherKit
 import MapKit
+import CoreLocation
 
 
 @MainActor
@@ -15,6 +16,7 @@ class MyWeather: ObservableObject
 {
     static let shared = MyWeather()
     
+    let location = Location()
     @Published var theweather : Weather?
     @Published var place = "Home"
     
@@ -70,7 +72,7 @@ class MyWeather: ObservableObject
                     }
                 }
                 
-                try await Task.sleep(for:.seconds(60 * 5))
+                try await Task.sleep(for:.seconds(60 * 15))
             }
         }
     }
@@ -78,6 +80,40 @@ class MyWeather: ObservableObject
     
     func lookUpWeather(for address: String) async -> Weather?
     {
+        var gotloc = false
+        
+        do
+        {
+            while (gotloc == false)
+            {
+                if location.haveLocation() == true
+                {
+                    gotloc = true
+                }
+                else
+                {
+                    try await Task.sleep(for:.seconds(3))
+                }
+            }
+            
+            let locations = location.getLocations()
+            if locations.count > 0
+            {
+                let loc = locations[0]
+                let weather = try await WeatherService.shared.weather(for:loc)
+                gotloc = true
+                return weather
+            }
+        }
+        catch
+        {
+            print("cllocation error: \(error)")
+        }
+            
+           
+        
+        
+        
         let geocoder = CLGeocoder()
         
         do

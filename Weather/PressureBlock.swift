@@ -22,32 +22,33 @@ struct PressureBlock: View
             {
                 HStack(spacing:10.0)
                 {
-                    Image(systemName: "thermometer.medium")
+                    Image(systemName: "gauge.medium")
                         .imageScale(.medium)
                     Text("Pressure")
                         .font(.title2)
+                        .foregroundColor(settings.titleColor)
                 }
-                .foregroundColor(settings.titleColor)
+                .foregroundColor(settings.tintColor)
                 
                 HStack
                 {
-                    let hg = current.pressure.converted(to: .inchesOfMercury).value
-                    let hgstr = NSString(format:"%.2f", hg)
+                    let hg = current.pressure.converted(to:.inchesOfMercury).value
+                    let hgstr = NSString(format:"%.2f",hg)
                     Text("\(hgstr)")
                     
                     switch current.pressureTrend
                     {
                     case .falling:
-                        Image(systemName: "arrow.down.right")
+                        Image(systemName:"arrow.down.right")
                             .imageScale(.medium)
                     case .rising:
-                        Image(systemName: "arrow.up.right")
+                        Image(systemName:"arrow.up.right")
                             .imageScale(.medium)
                     case .steady:
-                        Image(systemName: "arrow.right")
+                        Image(systemName:"arrow.right")
                             .imageScale(.medium)
                     default:
-                        Image(systemName: "questionmark")
+                        Image(systemName:"questionmark")
                             .imageScale(.medium)
                     }
                     

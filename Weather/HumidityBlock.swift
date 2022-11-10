@@ -26,8 +26,9 @@ struct HumidityBlock: View
                         .imageScale(.medium)
                     Text("Humidity")
                         .font(.title2)
+                        .foregroundColor(settings.titleColor)
                 }
-                .foregroundColor(settings.titleColor)
+                .foregroundColor(settings.tintColor)
                 
                 HStack
                 {

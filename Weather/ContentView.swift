@@ -19,7 +19,7 @@ struct ContentView: View
         {
             TemperatureBlock(myweather: myweather)
             
-            HStack
+            HStack()
             {
                 WindBlock(myweather: myweather)
                 PrecipBlock(myweather: myweather)
