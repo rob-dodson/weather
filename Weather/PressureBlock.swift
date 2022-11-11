@@ -52,7 +52,7 @@ struct PressureBlock: View
                             .imageScale(.medium)
                     }
                     
-                    Text("\(current.pressureTrend.rawValue)")
+                    Text("\(current.pressureTrend.description)")
                 }
                 .foregroundColor(settings.tintColor)
                 .font(.title3)

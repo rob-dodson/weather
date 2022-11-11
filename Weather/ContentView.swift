@@ -23,6 +23,7 @@ struct ContentView: View
             {
                 WindBlock(myweather: myweather)
                 PrecipBlock(myweather: myweather)
+                DayForecastBlock(myweather: myweather)
             }
             
             HStack

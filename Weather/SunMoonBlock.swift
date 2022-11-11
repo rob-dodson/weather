@@ -50,7 +50,7 @@ struct SunMoonBlock: View
                             
                             Text("\((sun.sunset?.formatted(date: .omitted, time: .shortened))!)")
                             
-                            Text("UV: \(current.uvIndex.category.rawValue)")
+                            Text("UV: \(current.uvIndex.category.description)")
                                 .font(.system(size: 10.0))
                         }
                         .foregroundColor(settings.tintColor)
@@ -70,7 +70,7 @@ struct SunMoonBlock: View
                                     .imageScale(.small)
                                 Text("\((moon.moonset?.formatted(date: .omitted, time: .shortened))!)")
                                 
-                                Text("Phase: \(moon.phase.rawValue)")
+                                Text("Phase: \(moon.phase.description)")
                                     .font(.system(size: 10.0))
                                 
                                 Image(systemName: moon.phase.symbolName)

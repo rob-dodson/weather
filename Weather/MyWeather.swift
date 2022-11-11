@@ -61,6 +61,13 @@ class MyWeather: ObservableObject
                         print(" dewPoint     : \(current.dewPoint.converted(to: .fahrenheit).formatted())")
                     }
                     
+                    
+                    print("DAILY \(theweather?.dailyForecast.count)")
+                    for day in theweather!.dailyForecast
+                    {
+                        print ("HI \(day.highTemperature.converted(to: .fahrenheit).formatted())")
+                    }
+                    
                     if let daily = theweather?.dailyForecast[0]
                     {
                         print(" low           : \(daily.lowTemperature.converted(to: .fahrenheit).formatted())")
@@ -99,9 +106,7 @@ class MyWeather: ObservableObject
             let locations = location.getLocations()
             if locations.count > 0
             {
-                let loc = locations[0]
-                let weather = try await WeatherService.shared.weather(for:loc)
-                gotloc = true
+                let weather = try await WeatherService.shared.weather(for:locations[0])
                 return weather
             }
         }
