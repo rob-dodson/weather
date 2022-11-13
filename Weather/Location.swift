@@ -52,6 +52,7 @@ class Location : NSObject, CLLocationManagerDelegate
         
         locations.forEach
         { (location) in
+        
           print("LocationManager didUpdateLocations: \(dateFormatter.string(from: location.timestamp)); \(location.coordinate.latitude), \(location.coordinate.longitude)")
           print("LocationManager altitude: \(location.altitude)")
         print("LocationManager floor?.level: \(String(describing: location.floor?.level))")

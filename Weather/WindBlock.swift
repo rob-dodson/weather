@@ -23,7 +23,7 @@ struct WindBlock: View
                 {
                     Image(systemName: "wind")
                         .imageScale(.medium)
-                    
+                        .foregroundColor(settings.symbolColor)
                     Text("Wind")
                         .foregroundColor(settings.titleColor)
                         .font(.title2)

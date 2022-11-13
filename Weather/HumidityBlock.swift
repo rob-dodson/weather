@@ -24,6 +24,8 @@ struct HumidityBlock: View
                 {
                     Image(systemName: "humidity")
                         .imageScale(.medium)
+                        .foregroundColor(settings.symbolColor)
+                    
                     Text("Humidity")
                         .font(.title2)
                         .foregroundColor(settings.titleColor)
@@ -46,7 +48,6 @@ struct HumidityBlock: View
         .padding()
         .background(settings.blockColor)
         .cornerRadius(15)
-        .shadow(radius: 10)
         .opacity(60.0)
     }
 }

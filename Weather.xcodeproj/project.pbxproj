@@ -13,6 +13,7 @@
 		AE9391DC2860E2E7002ED6AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE9391DB2860E2E7002ED6AE /* Preview Assets.xcassets */; };
 		AE9391E42860E5D2002ED6AE /* MyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9391E32860E5D2002ED6AE /* MyWeather.swift */; };
 		AEAB0E0E291EB98A00F221B6 /* DayForecastBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAB0E0D291EB98A00F221B6 /* DayForecastBlock.swift */; };
+		AEAB0E10291F11FA00F221B6 /* HourForecastBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAB0E0F291F11FA00F221B6 /* HourForecastBlock.swift */; };
 		AECC3D4F291824CF00DC0636 /* TemperatureBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC3D4E291824CF00DC0636 /* TemperatureBlock.swift */; };
 		AECC3D512918283D00DC0636 /* WindBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC3D502918283D00DC0636 /* WindBlock.swift */; };
 		AECC3D5329182A4E00DC0636 /* PercipBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC3D5229182A4E00DC0636 /* PercipBlock.swift */; };
@@ -32,6 +33,7 @@
 		AE9391DD2860E2E7002ED6AE /* Weather.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Weather.entitlements; sourceTree = "<group>"; };
 		AE9391E32860E5D2002ED6AE /* MyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWeather.swift; sourceTree = "<group>"; };
 		AEAB0E0D291EB98A00F221B6 /* DayForecastBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayForecastBlock.swift; sourceTree = "<group>"; };
+		AEAB0E0F291F11FA00F221B6 /* HourForecastBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourForecastBlock.swift; sourceTree = "<group>"; };
 		AECC3D4E291824CF00DC0636 /* TemperatureBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureBlock.swift; sourceTree = "<group>"; };
 		AECC3D502918283D00DC0636 /* WindBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindBlock.swift; sourceTree = "<group>"; };
 		AECC3D5229182A4E00DC0636 /* PercipBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercipBlock.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				AECC3D7F291C594400DC0636 /* PressureBlock.swift */,
 				AECC3D81291C612F00DC0636 /* HumidityBlock.swift */,
 				AEAB0E0D291EB98A00F221B6 /* DayForecastBlock.swift */,
+				AEAB0E0F291F11FA00F221B6 /* HourForecastBlock.swift */,
 				AE9391D42860E2E7002ED6AE /* WeatherApp.swift */,
 				AE9391D82860E2E7002ED6AE /* Assets.xcassets */,
 				AE9391DD2860E2E7002ED6AE /* Weather.entitlements */,
@@ -172,6 +175,7 @@
 				AECC3D82291C612F00DC0636 /* HumidityBlock.swift in Sources */,
 				AECC3D86291C95E900DC0636 /* Location.swift in Sources */,
 				AECC3D5329182A4E00DC0636 /* PercipBlock.swift in Sources */,
+				AEAB0E10291F11FA00F221B6 /* HourForecastBlock.swift in Sources */,
 				AE9391D72860E2E7002ED6AE /* ContentView.swift in Sources */,
 				AECC3D80291C594400DC0636 /* PressureBlock.swift in Sources */,
 				AEAB0E0E291EB98A00F221B6 /* DayForecastBlock.swift in Sources */,

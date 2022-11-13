@@ -24,6 +24,8 @@ struct PressureBlock: View
                 {
                     Image(systemName: "gauge.medium")
                         .imageScale(.medium)
+                        .foregroundColor(settings.symbolColor)
+                    
                     Text("Pressure")
                         .font(.title2)
                         .foregroundColor(settings.titleColor)
@@ -41,15 +43,19 @@ struct PressureBlock: View
                     case .falling:
                         Image(systemName:"arrow.down.right")
                             .imageScale(.medium)
+                            .foregroundColor(settings.symbolColor)
                     case .rising:
                         Image(systemName:"arrow.up.right")
                             .imageScale(.medium)
+                            .foregroundColor(settings.symbolColor)
                     case .steady:
                         Image(systemName:"arrow.right")
                             .imageScale(.medium)
+                            .foregroundColor(settings.symbolColor)
                     default:
                         Image(systemName:"questionmark")
                             .imageScale(.medium)
+                            .foregroundColor(settings.symbolColor)
                     }
                     
                     Text("\(current.pressureTrend.description)")
@@ -62,7 +68,6 @@ struct PressureBlock: View
         .padding()
         .background(settings.blockColor)
         .cornerRadius(15)
-        .shadow(radius: 10)
         .opacity(60.0)
     }
 }

@@ -13,7 +13,7 @@ class Settings: Combine.ObservableObject {
     
     var willChange = PassthroughSubject<Void, Never>()
     
-    var tintColor = Color.orange
+    var tintColor = Color.gray
     {
         willSet
         {
@@ -21,7 +21,15 @@ class Settings: Combine.ObservableObject {
         }
     }
     
-    var titleColor = Color(red: 0.8, green: 0.8, blue: 0.3)
+    var symbolColor = Color.blue
+    {
+        willSet
+        {
+            willChange.send()
+        }
+    }
+    
+    var titleColor = Color.orange
     {
         willSet
         {

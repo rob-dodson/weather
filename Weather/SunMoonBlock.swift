@@ -26,8 +26,10 @@ struct SunMoonBlock: View
                 {
                     Image(systemName: "sun.max")
                         .imageScale(.medium)
+                        .foregroundColor(settings.symbolColor)
                     Image(systemName: "moon")
                         .imageScale(.medium)
+                        .foregroundColor(settings.symbolColor)
                     Text("Sun & Moon")
                         .foregroundColor(settings.titleColor)
                         .font(.title2)
@@ -43,10 +45,13 @@ struct SunMoonBlock: View
                             Text("Sun")
                             Image(systemName: "arrow.up")
                                 .imageScale(.small)
+                                .foregroundColor(settings.symbolColor)
+                            
                             Text("\((sun.sunrise?.formatted(date: .omitted, time: .shortened) )!)")
                             
                             Image(systemName: "arrow.down")
                                 .imageScale(.small)
+                                .foregroundColor(settings.symbolColor)
                             
                             Text("\((sun.sunset?.formatted(date: .omitted, time: .shortened))!)")
                             
@@ -63,11 +68,14 @@ struct SunMoonBlock: View
                                 Text("Moon")
                                 Image(systemName: "arrow.up")
                                     .imageScale(.small)
+                                    .foregroundColor(settings.symbolColor)
                                 
                                 Text("\((moon.moonrise?.formatted(date: .omitted, time: .shortened) )!)")
                                 
                                 Image(systemName: "arrow.down")
                                     .imageScale(.small)
+                                    .foregroundColor(settings.symbolColor)
+                                
                                 Text("\((moon.moonset?.formatted(date: .omitted, time: .shortened))!)")
                                 
                                 Text("Phase: \(moon.phase.description)")
@@ -75,6 +83,7 @@ struct SunMoonBlock: View
                                 
                                 Image(systemName: moon.phase.symbolName)
                                     .imageScale(.small)
+                                    .foregroundColor(settings.symbolColor)
                             }
                             .foregroundColor(settings.tintColor)
                             .font(.title3)
@@ -86,7 +95,6 @@ struct SunMoonBlock: View
         .padding()
         .background(settings.blockColor)
         .cornerRadius(15)
-        .shadow(radius: 10)
         .opacity(60.0)
     }
 }

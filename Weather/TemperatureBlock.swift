@@ -25,6 +25,7 @@ struct TemperatureBlock: View
                 {
                     Image(systemName: current.symbolName)
                         .imageScale(.large)
+                        .foregroundColor(settings.symbolColor)
                     
                     Text("\(myweather.place)")
                         .font(.system(size: 50.0))
@@ -55,7 +56,6 @@ struct TemperatureBlock: View
         .foregroundColor(settings.tintColor)
         .background(settings.blockColor)
         .cornerRadius(15)
-        .shadow(radius: 10)
         .opacity(60.0)
     }
 }

@@ -27,7 +27,7 @@ struct PrecipBlock: View
                 {
                     Image(systemName: "cloud.rain")
                         .imageScale(.medium)
-                    
+                        .foregroundColor(settings.symbolColor)
                     Text("Precipitation")
                         .foregroundColor(settings.titleColor)
                         .font(.title2)
@@ -54,7 +54,6 @@ struct PrecipBlock: View
         .foregroundColor(settings.tintColor)
         .background(settings.blockColor)
         .cornerRadius(15)
-        .shadow(radius: 10)
         .opacity(60.0)
     }
 }

@@ -62,12 +62,6 @@ class MyWeather: ObservableObject
                     }
                     
                     
-                    print("DAILY \(theweather?.dailyForecast.count)")
-                    for day in theweather!.dailyForecast
-                    {
-                        print ("HI \(day.highTemperature.converted(to: .fahrenheit).formatted())")
-                    }
-                    
                     if let daily = theweather?.dailyForecast[0]
                     {
                         print(" low           : \(daily.lowTemperature.converted(to: .fahrenheit).formatted())")
@@ -106,6 +100,10 @@ class MyWeather: ObservableObject
             let locations = location.getLocations()
             if locations.count > 0
             {
+                let geocoder = CLGeocoder()
+                let placemark = try await geocoder.reverseGeocodeLocation(locations[0])
+                place = "\(placemark[0].locality ?? "?") \(placemark[0].administrativeArea ?? "?")"
+                
                 let weather = try await WeatherService.shared.weather(for:locations[0])
                 return weather
             }
@@ -114,10 +112,7 @@ class MyWeather: ObservableObject
         {
             print("cllocation error: \(error)")
         }
-            
-           
-        
-        
+         
         
         let geocoder = CLGeocoder()
         

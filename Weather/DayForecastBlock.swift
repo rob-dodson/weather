@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WeatherKit
+import Charts
 
 struct DayForecastBlock: View
 {
@@ -16,13 +17,21 @@ struct DayForecastBlock: View
     
     var body: some View
     {
-        VStack(alignment: .center, spacing: 5.0)
+        VStack(alignment: .center, spacing: 10.0)
         {
             if let weather = myweather.theweather
             {
-                Text("Daily Forecast")
-                    .foregroundColor(settings.titleColor)
-                    .font(.title2)
+                HStack
+                {
+                    Image(systemName: "chart.xyaxis.line")
+                        .imageScale(.medium)
+                        .foregroundColor(settings.symbolColor)
+                    
+                    Text("Daily Forecast")
+                        .foregroundColor(settings.titleColor)
+                        .font(.title2)
+                }
+                
                 
                 let dailies = weather.dailyForecast
                 HStack
@@ -30,10 +39,11 @@ struct DayForecastBlock: View
                     ForEach(dailies.indices)
                     { index in
                         let day = dailies[index]
-                        VStack
+                        VStack(spacing: 5.0)
                         {
                             Image(systemName: "\(day.symbolName)")
                                 .imageScale(.medium)
+                                .foregroundColor(settings.symbolColor)
                             
                             Text("\(day.highTemperature.converted(to: .fahrenheit).formatted())")
                             Text("\(day.lowTemperature.converted(to: .fahrenheit).formatted())")
@@ -43,14 +53,52 @@ struct DayForecastBlock: View
                 }
                 .foregroundColor(settings.tintColor)
                 .font(.title3)
+                
+                let newdailies = convert(oldweatherdata:dailies)
+                Chart(newdailies)
+                {
+                        LineMark(
+                                    x: .value("Date", $0.date),
+                                    y: .value("Temp", $0.temp)
+                                )
+                                .foregroundStyle(by: .value("type", $0.type))
+                }
+                .frame(width:400,height:100)
+                
             }
         }
         .padding()
         .background(settings.blockColor)
         
         .cornerRadius(15)
-        .shadow(radius: 10)
         .opacity(60.0)
     }
+}
+
+
+struct daydata : Identifiable
+{
+    var date : Date
+    var temp : Double
+    var type : String
+    var id = UUID()
+}
+
+func convert(oldweatherdata:Forecast<DayWeather>) -> [daydata]
+{
+        var newdays = Array<daydata>()
+    
+        for oldday in oldweatherdata
+        {
+            let hitemp = oldday.highTemperature.converted(to: .fahrenheit).value
+            let lowtemp = oldday.lowTemperature.converted(to: .fahrenheit).value
+            
+            let hinewday = daydata(date: oldday.date, temp: hitemp, type: "high temp")
+            newdays.append(hinewday)
+            let lownewday = daydata(date: oldday.date, temp: lowtemp, type: "low temp")
+            newdays.append(lownewday)
+        }
+    
+    return newdays
 }
 
