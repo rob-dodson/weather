@@ -79,64 +79,72 @@ class MyWeather: ObservableObject
     }
     
     
-    func lookUpWeather(for address: String) async -> Weather?
+    func lookUpWeather(for address: String?) async -> Weather?
     {
-        var gotloc = false
-        
-        do
+        if address == nil
         {
-            while (gotloc == false)
+            var gotloc = false
+            
+            do
             {
-                if location.haveLocation() == true
+                while (gotloc == false)
                 {
-                    gotloc = true
+                    if location.haveLocation() == true
+                    {
+                        gotloc = true
+                    }
+                    else
+                    {
+                        try await Task.sleep(for:.seconds(3))
+                    }
+                }
+                
+                let locations = location.getLocations()
+                if locations.count > 0
+                {
+                    let geocoder = CLGeocoder()
+                    let placemark = try await geocoder.reverseGeocodeLocation(locations[0])
+                    place = "\(placemark[0].locality ?? "?") \(placemark[0].administrativeArea ?? "?")"
+                    
+                    let weather = try await WeatherService.shared.weather(for:locations[0])
+                    return weather
+                }
+            }
+            catch
+            {
+                print("cllocation error: \(error)")
+            }
+        }
+        else
+        {
+            
+            let geocoder = CLGeocoder()
+            
+            do
+            {
+                let placemark = try await geocoder.geocodeAddressString(address ?? "Tacoma WA")
+                
+                if let location = placemark[0].location
+                {
+                    let weather = try await WeatherService.shared.weather(for:location)
+                    return weather
                 }
                 else
                 {
-                    try await Task.sleep(for:.seconds(3))
+                    print("Failed getting location for \(String(describing: address))")
+                    return nil
                 }
             }
-            
-            let locations = location.getLocations()
-            if locations.count > 0
+            catch
             {
-                let geocoder = CLGeocoder()
-                let placemark = try await geocoder.reverseGeocodeLocation(locations[0])
-                place = "\(placemark[0].locality ?? "?") \(placemark[0].administrativeArea ?? "?")"
-                
-                let weather = try await WeatherService.shared.weather(for:locations[0])
-                return weather
-            }
-        }
-        catch
-        {
-            print("cllocation error: \(error)")
-        }
-         
-        
-        let geocoder = CLGeocoder()
-        
-        do
-        {
-            let placemark = try await geocoder.geocodeAddressString(address)
-            
-            if let location = placemark[0].location
-            {
-                let weather = try await WeatherService.shared.weather(for:location)
-                return weather
-            }
-            else
-            {
-                print("Failed getting location for \(address)")
+                print("geocode error: \(error)")
                 return nil
             }
         }
-        catch
-        {
-            print("geocode error: \(error)")
-            return nil
-        }
+        return nil
     }
+    
+    
 }
         
     

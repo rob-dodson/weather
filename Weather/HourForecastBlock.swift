@@ -27,7 +27,7 @@ struct HourForecastBlock: View
                     Image(systemName: "chart.xyaxis.line")
                         .imageScale(.medium)
                         .foregroundColor(settings.symbolColor)
-                        
+                        .frame(width: 20.0,height: 20.0,alignment: .bottom)
                     
                     Text("Hourly Forecast")
                         .foregroundColor(settings.titleColor)
@@ -94,8 +94,8 @@ func convert(oldweatherdata:Forecast<HourWeather>) -> [hourdata]
         {
             if oldhour.date.timeIntervalSinceNow > 0 && oldhour.date.timeIntervalSinceNow < (60 * 60 * 12)
             {
-                let temp = oldhour.temperature.converted(to: .fahrenheit)
-                let newhour = hourdata(date: oldhour.date, temp: oldhour.temperature.converted(to: .fahrenheit).value)
+                let newhour = hourdata(date: oldhour.date,
+                                       temp: oldhour.temperature.converted(to: .fahrenheit).value)
                 newhours.append(newhour)
             }
         }

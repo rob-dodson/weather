@@ -44,6 +44,7 @@ struct DayForecastBlock: View
                             Image(systemName: "\(day.symbolName)")
                                 .imageScale(.medium)
                                 .foregroundColor(settings.symbolColor)
+                                .frame(width: 20.0,height: 20.0,alignment: .bottom)
                             
                             Text("\(day.highTemperature.converted(to: .fahrenheit).formatted())")
                             Text("\(day.lowTemperature.converted(to: .fahrenheit).formatted())")
