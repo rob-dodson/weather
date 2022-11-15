@@ -17,13 +17,21 @@ struct ContentView: View
     {
         VStack (alignment:.center,spacing:10.0)
         {
+            Text("Weather")
+                .foregroundColor(settings.topTitleColor)
+                .font(.title)
+            
+            Rectangle()
+                .stroke(settings.tintColor)
+                .frame(width: 500, height: 1)
+            
             TemperatureBlock(myweather: myweather)
+            DayForecastBlock(myweather: myweather)
             
             HStack()
             {
                 WindBlock(myweather: myweather)
                 PrecipBlock(myweather: myweather)
-               
             }
             
             HStack
@@ -31,12 +39,12 @@ struct ContentView: View
                 SunMoonBlock(myweather: myweather)
                 PressureBlock(myweather: myweather)
             }
+            
             HStack
             {
                 HumidityBlock(myweather: myweather)
             }
             
-            DayForecastBlock(myweather: myweather)
             HourForecastBlock(myweather: myweather)
         }
     }

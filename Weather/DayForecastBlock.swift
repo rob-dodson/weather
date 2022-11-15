@@ -34,7 +34,7 @@ struct DayForecastBlock: View
                 
                 
                 let dailies = weather.dailyForecast
-                HStack
+                HStack(spacing: 15)
                 {
                     ForEach(dailies.indices)
                     { index in
@@ -44,10 +44,10 @@ struct DayForecastBlock: View
                             Image(systemName: "\(day.symbolName)")
                                 .imageScale(.medium)
                                 .foregroundColor(settings.symbolColor)
-                                .frame(width: 20.0,height: 20.0,alignment: .bottom)
+                                .frame(width: 20.0,height: 20.0,alignment: .center)
                             
-                            Text("\(day.highTemperature.converted(to: .fahrenheit).formatted())")
-                            Text("\(day.lowTemperature.converted(to: .fahrenheit).formatted())")
+                           // Text("\(day.highTemperature.converted(to: .fahrenheit).formatted())")
+                          // Text("\(day.lowTemperature.converted(to: .fahrenheit).formatted())")
                             Text("\(day.date.formatted(Date.FormatStyle().weekday()))")
                         }
                     }
@@ -59,10 +59,10 @@ struct DayForecastBlock: View
                 Chart(newdailies)
                 {
                         LineMark(
-                                    x: .value("Date", $0.date),
-                                    y: .value("Temp", $0.temp)
-                                )
-                                .foregroundStyle(by: .value("type", $0.type))
+                            x: .value("Date", $0.date),
+                            y: .value("Val", $0.val)
+                        )
+                        .foregroundStyle(by: .value("type", $0.type))
                 }
                 .frame(width:400,height:100)
                 
@@ -80,7 +80,7 @@ struct DayForecastBlock: View
 struct daydata : Identifiable
 {
     var date : Date
-    var temp : Double
+    var val : Double
     var type : String
     var id = UUID()
 }
@@ -94,10 +94,15 @@ func convert(oldweatherdata:Forecast<DayWeather>) -> [daydata]
             let hitemp = oldday.highTemperature.converted(to: .fahrenheit).value
             let lowtemp = oldday.lowTemperature.converted(to: .fahrenheit).value
             
-            let hinewday = daydata(date: oldday.date, temp: hitemp, type: "high temp")
-            newdays.append(hinewday)
-            let lownewday = daydata(date: oldday.date, temp: lowtemp, type: "low temp")
-            newdays.append(lownewday)
+            let a = daydata(date: oldday.date, val: hitemp,type:"High Temp")
+            newdays.append(a)
+            let b = daydata(date: oldday.date, val: lowtemp,type:"Low Temp")
+            newdays.append(b)
+            let c = daydata(date: oldday.date, val: oldday.precipitationChance * 100.0,type:"Precip Chance")
+            newdays.append(c)
+            let d = daydata(date: oldday.date, val: oldday.wind.speed.value,type:"Wind")
+            newdays.append(d)
+
         }
     
     return newdays

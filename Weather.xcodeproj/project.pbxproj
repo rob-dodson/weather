@@ -34,6 +34,7 @@
 		AE9391E32860E5D2002ED6AE /* MyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWeather.swift; sourceTree = "<group>"; };
 		AEAB0E0D291EB98A00F221B6 /* DayForecastBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayForecastBlock.swift; sourceTree = "<group>"; };
 		AEAB0E0F291F11FA00F221B6 /* HourForecastBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourForecastBlock.swift; sourceTree = "<group>"; };
+		AEAB0E112923CD5D00F221B6 /* ReynNotes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReynNotes.md; sourceTree = "<group>"; };
 		AECC3D4E291824CF00DC0636 /* TemperatureBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureBlock.swift; sourceTree = "<group>"; };
 		AECC3D502918283D00DC0636 /* WindBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindBlock.swift; sourceTree = "<group>"; };
 		AECC3D5229182A4E00DC0636 /* PercipBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercipBlock.swift; sourceTree = "<group>"; };
@@ -90,6 +91,7 @@
 				AE9391D82860E2E7002ED6AE /* Assets.xcassets */,
 				AE9391DD2860E2E7002ED6AE /* Weather.entitlements */,
 				AE9391DA2860E2E7002ED6AE /* Preview Content */,
+				AEAB0E112923CD5D00F221B6 /* ReynNotes.md */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -321,6 +323,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Display Message Location Always and When In Use Usage Description";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Display Message for Location When In Use Usage Description";
@@ -356,6 +359,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Display Message Location Always and When In Use Usage Description";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Display Message for Location When In Use Usage Description";

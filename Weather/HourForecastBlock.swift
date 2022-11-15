@@ -27,7 +27,7 @@ struct HourForecastBlock: View
                     Image(systemName: "chart.xyaxis.line")
                         .imageScale(.medium)
                         .foregroundColor(settings.symbolColor)
-                        .frame(width: 20.0,height: 20.0,alignment: .bottom)
+                        .frame(width: 20.0,height: 20.0,alignment: .center)
                     
                     Text("Hourly Forecast")
                         .foregroundColor(settings.titleColor)
@@ -49,9 +49,9 @@ struct HourForecastBlock: View
                                     .imageScale(.medium)
                                     .foregroundColor(settings.symbolColor)
                                 
-                                Text("\(hour.temperature.converted(to: .fahrenheit).formatted())")
+                               // Text("\(hour.temperature.converted(to: .fahrenheit).formatted())")
                                 Text("\(hour.date.formatted(Date.FormatStyle().hour()))")
-                                Text("\(hour.date.formatted(Date.FormatStyle().weekday()))")
+                               // Text("\(hour.date.formatted(Date.FormatStyle().weekday()))")
                             }
                         }
                     }
@@ -62,13 +62,13 @@ struct HourForecastBlock: View
                 let newhours = convert(oldweatherdata:hours)
                 Chart(newhours)
                 {
-                        LineMark(
-                                    x: .value("Date", $0.date),
-                                    y: .value("Temp", $0.temp)
-                                )
-                                .foregroundStyle(.blue)
+                    LineMark(
+                        x: .value("Date", $0.date),
+                        y: .value("Val", $0.val)
+                    )
+                    .foregroundStyle(by: .value("type", $0.type))
                 }
-                .frame(width:400,height:100)
+                .frame(width:500,height:100)
                 
             }
         }
@@ -79,12 +79,15 @@ struct HourForecastBlock: View
     }
 }
 
+
 struct hourdata : Identifiable
 {
     var date : Date
-    var temp : Double
+    var val : Double
+    var type : String
     var id = UUID()
 }
+
 
 func convert(oldweatherdata:Forecast<HourWeather>) -> [hourdata]
 {
@@ -94,9 +97,14 @@ func convert(oldweatherdata:Forecast<HourWeather>) -> [hourdata]
         {
             if oldhour.date.timeIntervalSinceNow > 0 && oldhour.date.timeIntervalSinceNow < (60 * 60 * 12)
             {
-                let newhour = hourdata(date: oldhour.date,
-                                       temp: oldhour.temperature.converted(to: .fahrenheit).value)
-                newhours.append(newhour)
+                let hitemp = oldhour.temperature.converted(to: .fahrenheit).value
+                
+                let a = hourdata(date: oldhour.date, val: hitemp,type:"Temp")
+                newhours.append(a)
+                let c = hourdata(date: oldhour.date, val: oldhour.precipitationChance * 100.0,type:"Precip Chance")
+                newhours.append(c)
+                let d = hourdata(date: oldhour.date, val: oldhour.wind.speed.value,type:"Wind")
+                newhours.append(d)
             }
         }
     

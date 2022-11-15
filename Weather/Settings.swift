@@ -37,6 +37,14 @@ class Settings: Combine.ObservableObject {
         }
     }
     
+    var topTitleColor = Color(red: 0.9, green: 0.9, blue: 0.9)
+    {
+        willSet
+        {
+            willChange.send()
+        }
+    }
+    
     var blockColor = Color(red: 0.2, green: 0.2, blue: 0.3)
     {
         willSet
