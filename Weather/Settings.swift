@@ -13,7 +13,7 @@ class Settings: Combine.ObservableObject {
     
     var willChange = PassthroughSubject<Void, Never>()
     
-    var tintColor = Color.gray
+    var tintColor = Color(hex:"#848484")
     {
         willSet
         {
@@ -21,7 +21,7 @@ class Settings: Combine.ObservableObject {
         }
     }
     
-    var symbolColor = Color.blue
+    var symbolColor = Color(hex:"#03a3ff")
     {
         willSet
         {
@@ -29,7 +29,7 @@ class Settings: Combine.ObservableObject {
         }
     }
     
-    var titleColor = Color.orange
+    var titleColor = Color(hex:"#ff5f03")
     {
         willSet
         {
@@ -37,7 +37,7 @@ class Settings: Combine.ObservableObject {
         }
     }
     
-    var topTitleColor = Color(red: 0.9, green: 0.9, blue: 0.9)
+    var topTitleColor = Color(hex:"#fff4ee")
     {
         willSet
         {
@@ -45,7 +45,7 @@ class Settings: Combine.ObservableObject {
         }
     }
     
-    var blockColor = Color(red: 0.2, green: 0.2, blue: 0.3)
+    var blockColor = Color(hex:"#030100")
     {
         willSet
         {
@@ -54,3 +54,27 @@ class Settings: Combine.ObservableObject {
     }
     
 }
+
+    extension Color
+    {
+        init(hex: String, alpha: CGFloat = 1)
+        {
+            assert(hex[hex.startIndex] == "#", "Expected hex string of format #RRGGBB")
+            
+            let scanner = Scanner(string: hex)
+            var set = CharacterSet()
+            set.insert("#")
+            scanner.charactersToBeSkipped = set
+            
+            var rgb: UInt64 = 0
+            scanner.scanHexInt64(&rgb)
+            
+            self.init(
+                red:   CGFloat((rgb & 0xFF0000) >> 16)/255.0,
+                green: CGFloat((rgb &   0xFF00) >>  8)/255.0,
+                blue:  CGFloat((rgb &     0xFF)      )/255.0)
+        }
+    }
+   
+    
+
