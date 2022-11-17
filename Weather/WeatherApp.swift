@@ -32,17 +32,16 @@ struct WeatherApp: App
     {
         MenuBarExtra("Weather", systemImage: "cloud.sun.fill")
         {
-            ScrollView
+            HStack
             {
                  ContentView(myweather: myweather).environmentObject(Settings())
             }
-            .frame(width: 450,height: 850,alignment: .center)
-           // .scenePadding(.all)
-           // .backgroundStyle(.gray)
+            .frame(width: 450,height: 1050,alignment: .center)
             .background()
             {
                 Image("back1")
             }
+            .scaledToFit()
         }
         .menuBarExtraStyle(.window)
         

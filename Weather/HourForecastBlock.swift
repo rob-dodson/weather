@@ -36,12 +36,12 @@ struct HourForecastBlock: View
                 
                 
                 let hours = weather.hourlyForecast
-                HStack
+                HStack(spacing: 15.0)
                 {
                     ForEach(hours.indices)
                     { index in
                         let hour = hours[index]
-                        if hour.date.timeIntervalSinceNow > 0 && hour.date.timeIntervalSinceNow < (60 * 60 * 12)
+                        if hour.date.timeIntervalSinceNow > 0 && hour.date.timeIntervalSinceNow < (60 * 60 * 8)
                         {
                             VStack(spacing: 5.0)
                             {
@@ -49,15 +49,13 @@ struct HourForecastBlock: View
                                     .imageScale(.medium)
                                     .foregroundColor(settings.symbolColor)
                                 
-                               // Text("\(hour.temperature.converted(to: .fahrenheit).formatted())")
                                 Text("\(hour.date.formatted(Date.FormatStyle().hour()))")
-                               // Text("\(hour.date.formatted(Date.FormatStyle().weekday()))")
                             }
                         }
                     }
                 }
                 .foregroundColor(settings.tintColor)
-                .font(.title3)
+                .font(settings.mainFont)
                 
                 let newhours = convert(oldweatherdata:hours)
                 Chart(newhours)
@@ -68,8 +66,12 @@ struct HourForecastBlock: View
                     )
                     .foregroundStyle(by: .value("type", $0.type))
                 }
-                .frame(width:500,height:100)
-                
+                .frame(width:370,height:100)
+                .chartForegroundStyleScale([
+                    "Temp" : Color.green,
+                    "Wind" : Color.pink,
+                    "Precip Chance" : Color.yellow
+                ])
             }
         }
         .padding()
@@ -95,7 +97,7 @@ func convert(oldweatherdata:Forecast<HourWeather>) -> [hourdata]
     
         for oldhour in oldweatherdata
         {
-            if oldhour.date.timeIntervalSinceNow > 0 && oldhour.date.timeIntervalSinceNow < (60 * 60 * 12)
+            if oldhour.date.timeIntervalSinceNow > 0 && oldhour.date.timeIntervalSinceNow < (60 * 60 * 8)
             {
                 let hitemp = oldhour.temperature.converted(to: .fahrenheit).value
                 

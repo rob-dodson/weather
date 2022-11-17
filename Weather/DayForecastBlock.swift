@@ -67,10 +67,15 @@ struct DayForecastBlock: View
                             x: .value("Date", $0.date),
                             y: .value("Val", $0.val)
                         )
-                        .foregroundStyle(by: .value("type", $0.type))
+                        .foregroundStyle(by: .value("type", $0.type) )
                 }
                 .frame(width:370,height:100)
-                
+                .chartForegroundStyleScale([
+                    "High Temp" : Color.green,
+                    "Low Temp" : Color.blue,
+                    "Wind" : Color.pink,
+                    "Precip Chance" : Color.yellow
+                ])
             }
         }
         .padding()
@@ -102,10 +107,11 @@ func convert(oldweatherdata:Forecast<DayWeather>) -> [daydata]
             newdays.append(a)
             let b = daydata(date: oldday.date, val: lowtemp,type:"Low Temp")
             newdays.append(b)
-            let c = daydata(date: oldday.date, val: oldday.precipitationChance * 100.0,type:"Precip Chance")
-            newdays.append(c)
             let d = daydata(date: oldday.date, val: oldday.wind.speed.value,type:"Wind")
             newdays.append(d)
+            let c = daydata(date: oldday.date, val: oldday.precipitationChance * 100.0,type:"Precip Chance")
+            newdays.append(c)
+           
 
         }
     

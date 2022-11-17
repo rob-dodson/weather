@@ -36,41 +36,8 @@ class MyWeather: ObservableObject
                 place = "Tacoma WA"
                 if let weather = await MyWeather.shared.lookUpWeather(for:place)
                 {
+                    print("weather loaded")
                     theweather = weather
-                    
-                    if let current = theweather?.currentWeather
-                    {
-                        print("=====")
-                        print(" location     : \(place)")
-                        print(" temp         : \(current.temperature.converted(to: .fahrenheit).formatted())")
-                        print(" feels like   : \(current.apparentTemperature.converted(to: .fahrenheit).formatted())")
-                        print(" cloudcover   : \(current.cloudCover)%")
-                        print(" condition    : \(current.condition)")
-                        print(" humidity     : \(current.humidity)%")
-                        print(" pressure     : \(current.pressure.converted(to: .inchesOfMercury).formatted())")
-                        print(" pressureTrend: \(current.pressureTrend)")
-                        print(" symbol       : \(current.symbolName)")
-                        print(" wind dir     : \(current.wind.compassDirection) \(current.wind.direction)")
-                        print(" wind speed   : \(current.wind.speed.formatted())")
-                        if let gust = current.wind.gust
-                        {
-                            print(" wind gust    : \(gust.formatted())")
-                        }
-                        print(" uvIndex      : \(current.uvIndex.category)")
-                        print(" visibility   : \(current.visibility.converted(to: .miles).formatted())")
-                        print(" dewPoint     : \(current.dewPoint.converted(to: .fahrenheit).formatted())")
-                    }
-                    
-                    
-                    if let daily = theweather?.dailyForecast[0]
-                    {
-                        print(" low           : \(daily.lowTemperature.converted(to: .fahrenheit).formatted())")
-                        print(" high          : \(daily.highTemperature.converted(to: .fahrenheit).formatted())")
-                        if (daily.precipitation != .none)
-                        {
-                            print(" precip chance : \(daily.precipitationChance * 100)% chance of \(daily.precipitation.description)")
-                        }
-                    }
                 }
                 
                 try await Task.sleep(for:.seconds(60 * 15))

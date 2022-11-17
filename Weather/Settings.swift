@@ -11,11 +11,19 @@ import Combine
 
 class Settings: Combine.ObservableObject
 {
-    let tintColor = Color(hex:"#bbbbbb")
-    let symbolColor = Color(hex:"#03a3ff")
-    let titleColor = Color(hex:"#ff5f03")
-    let topTitleColor = Color(hex:"#03a3ff")
-    let blockColor = Color(hex:"#000000")
+    var tintColor : Color
+    var symbolColor : Color
+    var titleColor : Color
+    var topTitleColor : Color
+    var blockColor : Color
+    
+    let colors: [String] =
+    ["#bbbbbb",
+    "#03a3ff",
+    "#ff5f03",
+    "#03a3ff",
+    "#000000"]
+    
     
     let hugeFont = Font.system(size: 40,weight: .bold)
     let titleFont = Font.system(size: 35.0)
@@ -24,6 +32,15 @@ class Settings: Combine.ObservableObject
     let smallFont = Font.system(size: 10.0)
     
     let blockPadding = 8.0
+    
+    init()
+    {
+        tintColor = Color(hex:colors[0])
+        symbolColor = Color(hex:colors[1])
+        titleColor = Color(hex:colors[2])
+        topTitleColor = Color(hex:colors[3])
+        blockColor = Color(hex:colors[4])
+    }
 }
 
 extension Color

@@ -26,8 +26,8 @@ struct ContentView: View
                 .frame(width: 500, height: 1)
             
             TemperatureBlock(myweather: myweather)
-            DayForecastBlock(myweather: myweather)
             HourForecastBlock(myweather: myweather)
+            DayForecastBlock(myweather: myweather)
         }
     }
     

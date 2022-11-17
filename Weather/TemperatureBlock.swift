@@ -35,17 +35,17 @@ struct TemperatureBlock: View
                 Text("\(current.date.formatted())")
                     .font(settings.smallFont)
                 
-                Text("\(current.temperature.formatted())")
+                Text("\(current.temperature.formatted(.measurement(width: .abbreviated)))")
                     .font(settings.titleFont)
                 
-                Text("Feels Like \(current.apparentTemperature.formatted())")
+                Text("Feels Like \(current.apparentTemperature.formatted(.measurement(width: .abbreviated)))")
                 
                 if let daily = myweather.theweather?.dailyForecast[0]
                 {
                     HStack(spacing:12.0)
                     {
-                        Text("Low \(daily.lowTemperature.formatted())")
-                        Text("High \(daily.highTemperature.formatted())")
+                        Text("Low \(daily.lowTemperature.formatted(.measurement(width: .abbreviated)))")
+                        Text("High \(daily.highTemperature.formatted(.measurement(width: .abbreviated)))")
                     }
                     Text("\(current.condition.description)")
                 }
