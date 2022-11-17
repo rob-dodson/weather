@@ -45,7 +45,7 @@ struct HumidityBlock: View
                         
             }
         }
-        .padding()
+        .padding(.init(settings.blockPadding))
         .background(settings.blockColor)
         .cornerRadius(15)
         .opacity(60.0)

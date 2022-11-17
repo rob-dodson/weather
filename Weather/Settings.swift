@@ -9,72 +9,41 @@ import Foundation
 import SwiftUI
 import Combine
 
-class Settings: Combine.ObservableObject {
+class Settings: Combine.ObservableObject
+{
+    let tintColor = Color(hex:"#bbbbbb")
+    let symbolColor = Color(hex:"#03a3ff")
+    let titleColor = Color(hex:"#ff5f03")
+    let topTitleColor = Color(hex:"#03a3ff")
+    let blockColor = Color(hex:"#000000")
     
-    var willChange = PassthroughSubject<Void, Never>()
+    let hugeFont = Font.system(size: 40,weight: .bold)
+    let titleFont = Font.system(size: 35.0)
+    let headingFont = Font.system(size: 18.0)
+    let mainFont = Font.system(size: 15.0)
+    let smallFont = Font.system(size: 10.0)
     
-    var tintColor = Color(hex:"#848484")
-    {
-        willSet
-        {
-            willChange.send()
-        }
-    }
-    
-    var symbolColor = Color(hex:"#03a3ff")
-    {
-        willSet
-        {
-            willChange.send()
-        }
-    }
-    
-    var titleColor = Color(hex:"#ff5f03")
-    {
-        willSet
-        {
-            willChange.send()
-        }
-    }
-    
-    var topTitleColor = Color(hex:"#fff4ee")
-    {
-        willSet
-        {
-            willChange.send()
-        }
-    }
-    
-    var blockColor = Color(hex:"#030100")
-    {
-        willSet
-        {
-            willChange.send()
-        }
-    }
-    
+    let blockPadding = 8.0
 }
 
-    extension Color
+extension Color
+{
+    init(hex: String, alpha: CGFloat = 1)
     {
-        init(hex: String, alpha: CGFloat = 1)
-        {
-            assert(hex[hex.startIndex] == "#", "Expected hex string of format #RRGGBB")
-            
-            let scanner = Scanner(string: hex)
-            var set = CharacterSet()
-            set.insert("#")
-            scanner.charactersToBeSkipped = set
-            
-            var rgb: UInt64 = 0
-            scanner.scanHexInt64(&rgb)
-            
-            self.init(
-                red:   CGFloat((rgb & 0xFF0000) >> 16)/255.0,
-                green: CGFloat((rgb &   0xFF00) >>  8)/255.0,
-                blue:  CGFloat((rgb &     0xFF)      )/255.0)
-        }
+        let scanner = Scanner(string: hex)
+        var set = CharacterSet()
+        set.insert("#")
+        scanner.charactersToBeSkipped = set
+        
+        var rgb: UInt64 = 0
+        scanner.scanHexInt64(&rgb)
+        
+        self.init(
+            red:   CGFloat((rgb & 0xFF0000) >> 16)/255.0,
+            green: CGFloat((rgb &   0xFF00) >>  8)/255.0,
+            blue:  CGFloat((rgb &     0xFF)      )/255.0)
     }
+}
    
     
 

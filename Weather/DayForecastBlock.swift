@@ -27,14 +27,13 @@ struct DayForecastBlock: View
                         .imageScale(.medium)
                         .foregroundColor(settings.symbolColor)
                     
-                    Text("Daily Forecast")
+                    Text("Ten Day Forecast")
                         .foregroundColor(settings.titleColor)
-                        .font(.title2)
+                        .font(settings.headingFont)
                 }
                 
-                
                 let dailies = weather.dailyForecast
-                HStack(spacing: 15)
+                HStack(spacing: 12)
                 {
                     ForEach(dailies.indices)
                     { index in
@@ -46,14 +45,20 @@ struct DayForecastBlock: View
                                 .foregroundColor(settings.symbolColor)
                                 .frame(width: 20.0,height: 20.0,alignment: .center)
                             
-                           // Text("\(day.highTemperature.converted(to: .fahrenheit).formatted())")
-                          // Text("\(day.lowTemperature.converted(to: .fahrenheit).formatted())")
-                            Text("\(day.date.formatted(Date.FormatStyle().weekday()))")
+                            if day.date.formatted(date: .abbreviated, time: .omitted) == Date.now.formatted(date: .abbreviated, time: .omitted)
+                            {
+                                //Text("\(day.date.formatted(Date.FormatStyle().weekday()))")
+                                Text("Today")
+                            }
+                            else
+                            {
+                                Text("\(day.date.formatted(Date.FormatStyle().weekday()))")
+                            }
                         }
                     }
                 }
                 .foregroundColor(settings.tintColor)
-                .font(.title3)
+                .font(settings.mainFont)
                 
                 let newdailies = convert(oldweatherdata:dailies)
                 Chart(newdailies)
@@ -64,13 +69,12 @@ struct DayForecastBlock: View
                         )
                         .foregroundStyle(by: .value("type", $0.type))
                 }
-                .frame(width:400,height:100)
+                .frame(width:370,height:100)
                 
             }
         }
         .padding()
         .background(settings.blockColor)
-        
         .cornerRadius(15)
         .opacity(60.0)
     }

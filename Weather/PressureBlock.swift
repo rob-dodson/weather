@@ -27,7 +27,7 @@ struct PressureBlock: View
                         .foregroundColor(settings.symbolColor)
                     
                     Text("Pressure")
-                        .font(.title2)
+                        .font(settings.headingFont)
                         .foregroundColor(settings.titleColor)
                 }
                 .foregroundColor(settings.tintColor)
@@ -38,34 +38,37 @@ struct PressureBlock: View
                     let hgstr = NSString(format:"%.2f",hg)
                     Text("\(hgstr)")
                     
-                    switch current.pressureTrend
+                    HStack(spacing: 1.0)
                     {
-                    case .falling:
-                        Image(systemName:"arrow.down.right")
-                            .imageScale(.medium)
-                            .foregroundColor(settings.symbolColor)
-                    case .rising:
-                        Image(systemName:"arrow.up.right")
-                            .imageScale(.medium)
-                            .foregroundColor(settings.symbolColor)
-                    case .steady:
-                        Image(systemName:"arrow.right")
-                            .imageScale(.medium)
-                            .foregroundColor(settings.symbolColor)
-                    default:
-                        Image(systemName:"questionmark")
-                            .imageScale(.medium)
-                            .foregroundColor(settings.symbolColor)
+                        switch current.pressureTrend
+                        {
+                        case .falling:
+                            Image(systemName:"arrow.down.right")
+                                .imageScale(.medium)
+                                .foregroundColor(settings.symbolColor)
+                        case .rising:
+                            Image(systemName:"arrow.up.right")
+                                .imageScale(.medium)
+                                .foregroundColor(settings.symbolColor)
+                        case .steady:
+                            Image(systemName:"arrow.right")
+                                .imageScale(.medium)
+                                .foregroundColor(settings.symbolColor)
+                        default:
+                            Image(systemName:"questionmark")
+                                .imageScale(.medium)
+                                .foregroundColor(settings.symbolColor)
+                        }
+                        
+                        Text("\(current.pressureTrend.description)")
                     }
-                    
-                    Text("\(current.pressureTrend.description)")
                 }
                 .foregroundColor(settings.tintColor)
-                .font(.title3)
+                .font(settings.mainFont)
                         
             }
         }
-        .padding()
+        .padding(.init(settings.blockPadding))
         .background(settings.blockColor)
         .cornerRadius(15)
         .opacity(60.0)

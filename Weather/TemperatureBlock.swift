@@ -17,7 +17,7 @@ struct TemperatureBlock: View
     
     var body: some View
     {
-        VStack(alignment: .center, spacing: 5.0)
+        VStack(alignment: .center, spacing: 1.0)
         {
             if let current = myweather.theweather?.currentWeather
             {
@@ -28,21 +28,21 @@ struct TemperatureBlock: View
                         .foregroundColor(settings.symbolColor)
                     
                     Text("\(myweather.place)")
-                        .font(.system(size: 50.0))
+                        .font(settings.titleFont)
                         .foregroundColor(settings.titleColor)
                 }
                 
                 Text("\(current.date.formatted())")
-                    .font(.system(size: 10.0))
+                    .font(settings.smallFont)
                 
                 Text("\(current.temperature.formatted())")
-                    .font(.system(size: 40.0))
+                    .font(settings.titleFont)
                 
                 Text("Feels Like \(current.apparentTemperature.formatted())")
                 
                 if let daily = myweather.theweather?.dailyForecast[0]
                 {
-                    HStack(spacing:15.0)
+                    HStack(spacing:12.0)
                     {
                         Text("Low \(daily.lowTemperature.formatted())")
                         Text("High \(daily.highTemperature.formatted())")
@@ -50,9 +50,17 @@ struct TemperatureBlock: View
                     Text("\(current.condition.description)")
                 }
             }
+
+            VStack(alignment: .center, spacing: 5.0)
+            {
+                PrecipBlock(myweather: myweather)
+                PressureBlock(myweather: myweather)
+                WindBlock(myweather: myweather)
+                SunMoonBlock(myweather: myweather)
+            }
         }
-        .padding()
-        .font(.title3)
+        .padding(.init(settings.blockPadding))
+        .font(settings.mainFont)
         .foregroundColor(settings.tintColor)
         .background(settings.blockColor)
         .cornerRadius(15)

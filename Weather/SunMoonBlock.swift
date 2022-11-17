@@ -22,7 +22,7 @@ struct SunMoonBlock: View
             {
                 let daily = myweather.theweather?.dailyForecast[0]
                 
-                HStack(spacing:10.0)
+                HStack(spacing:1.0)
                 {
                     Image(systemName: "sun.max")
                         .imageScale(.medium)
@@ -32,7 +32,7 @@ struct SunMoonBlock: View
                         .foregroundColor(settings.symbolColor)
                     Text("Sun & Moon")
                         .foregroundColor(settings.titleColor)
-                        .font(.title2)
+                        .font(settings.headingFont)
                 }
                 .foregroundColor(settings.tintColor)
                 
@@ -43,56 +43,86 @@ struct SunMoonBlock: View
                         HStack
                         {
                             Text("Sun")
-                            Image(systemName: "arrow.up")
-                                .imageScale(.small)
-                                .foregroundColor(settings.symbolColor)
                             
-                            Text("\((sun.sunrise?.formatted(date: .omitted, time: .shortened) )!)")
-                            
-                            Image(systemName: "arrow.down")
-                                .imageScale(.small)
-                                .foregroundColor(settings.symbolColor)
-                            
-                            Text("\((sun.sunset?.formatted(date: .omitted, time: .shortened))!)")
-                            
-                            Text("UV: \(current.uvIndex.category.description)")
-                                .font(.system(size: 10.0))
-                        }
-                        .foregroundColor(settings.tintColor)
-                        .font(.title3)
-                        
-                        if let moon = daily?.moon
-                        {
-                            HStack
+                            HStack(spacing: 1.0)
                             {
-                                Text("Moon")
                                 Image(systemName: "arrow.up")
                                     .imageScale(.small)
                                     .foregroundColor(settings.symbolColor)
                                 
-                                Text("\((moon.moonrise?.formatted(date: .omitted, time: .shortened) )!)")
-                                
+                                if let sunrise = sun.sunrise
+                                {
+                                    Text("\((sunrise.formatted(date: .omitted, time: .shortened)))")
+                                }
+                                else { Text("---") }
+                            }
+                            
+                            HStack(spacing: 1.0)
+                            {
                                 Image(systemName: "arrow.down")
                                     .imageScale(.small)
                                     .foregroundColor(settings.symbolColor)
                                 
-                                Text("\((moon.moonset?.formatted(date: .omitted, time: .shortened))!)")
+                                if let sunset = sun.sunset
+                                {
+                                    Text("\((sunset.formatted(date: .omitted, time: .shortened)))")
+                                }
+                                else { Text("---") }
+                            }
+                            
+                            Text("UV: \(current.uvIndex.category.description)")
+                                .font(settings.smallFont)
+                        }
+                        .foregroundColor(settings.tintColor)
+                        .font(settings.mainFont)
+                        
+                        if let moon = daily?.moon
+                        {
+                            HStack()
+                            {
+                                Text("Moon")
+                                
+                                HStack(spacing: 1.0)
+                                {
+                                    Image(systemName: "arrow.up")
+                                        .imageScale(.small)
+                                        .foregroundColor(settings.symbolColor)
+                                    
+                                    if let moonrise = moon.moonrise
+                                    {
+                                        Text("\((moonrise.formatted(date: .omitted, time: .shortened)))")
+                                    }
+                                    else { Text("---") }
+                                }
+                                
+                                HStack(spacing: 1.0)
+                                {
+                                    Image(systemName: "arrow.down")
+                                        .imageScale(.small)
+                                        .foregroundColor(settings.symbolColor)
+                                    
+                                    if let moonset = moon.moonset
+                                    {
+                                        Text("\((moonset.formatted(date: .omitted, time: .shortened)))")
+                                    }
+                                    else { Text("---") }
+                                }
                                 
                                 Text("Phase: \(moon.phase.description)")
-                                    .font(.system(size: 10.0))
+                                    .font(settings.smallFont)
                                 
                                 Image(systemName: moon.phase.symbolName)
                                     .imageScale(.small)
                                     .foregroundColor(settings.symbolColor)
                             }
                             .foregroundColor(settings.tintColor)
-                            .font(.title3)
+                            .font(settings.mainFont)
                         }
                     }
                 }
             }
         }
-        .padding()
+        .padding(.init(settings.blockPadding))
         .background(settings.blockColor)
         .cornerRadius(15)
         .opacity(60.0)

@@ -24,26 +24,26 @@ struct WindBlock: View
                     Image(systemName: "wind")
                         .imageScale(.medium)
                         .foregroundColor(settings.symbolColor)
+                    
                     Text("Wind")
                         .foregroundColor(settings.titleColor)
-                        .font(.title2)
+                        .font(settings.headingFont)
                 }
                 
                 Text("\(current.wind.compassDirection.description) @ \(current.wind.speed.formatted())")
-                    .font(.title3)
+                    .font(settings.mainFont)
                 
                 if let gust = current.wind.gust
                 {
                     Text("Gusts \(gust.formatted())")
-                        .font(.system(size: 10.0))
+                        .font(settings.smallFont)
                 }
             }
         }
-        .padding()
+        .padding(.init(settings.blockPadding))
         .foregroundColor(settings.tintColor)
         .background(settings.blockColor)
         .cornerRadius(15)
-        .shadow(radius:10)
         .opacity(60.0)
     }
 }

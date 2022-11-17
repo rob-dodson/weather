@@ -36,10 +36,13 @@ struct WeatherApp: App
             {
                  ContentView(myweather: myweather).environmentObject(Settings())
             }
-            .frame(width: 500,height: 600,alignment: .center)
-            .scenePadding(.all)
-            
-            
+            .frame(width: 450,height: 850,alignment: .center)
+           // .scenePadding(.all)
+           // .backgroundStyle(.gray)
+            .background()
+            {
+                Image("back1")
+            }
         }
         .menuBarExtraStyle(.window)
         

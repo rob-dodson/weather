@@ -15,36 +15,18 @@ struct ContentView: View
     
     var body: some View
     {
-        VStack (alignment:.center,spacing:10.0)
+        VStack (alignment:.center,spacing:15.0)
         {
             Text("Weather")
                 .foregroundColor(settings.topTitleColor)
-                .font(.title)
+                .font(settings.hugeFont)
             
             Rectangle()
-                .stroke(settings.tintColor)
+                .stroke(Color.black)
                 .frame(width: 500, height: 1)
             
             TemperatureBlock(myweather: myweather)
             DayForecastBlock(myweather: myweather)
-            
-            HStack()
-            {
-                WindBlock(myweather: myweather)
-                PrecipBlock(myweather: myweather)
-            }
-            
-            HStack
-            {
-                SunMoonBlock(myweather: myweather)
-                PressureBlock(myweather: myweather)
-            }
-            
-            HStack
-            {
-                HumidityBlock(myweather: myweather)
-            }
-            
             HourForecastBlock(myweather: myweather)
         }
     }

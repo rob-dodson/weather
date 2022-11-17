@@ -16,7 +16,7 @@ struct PrecipBlock: View
     
     var body: some View
     {
-        VStack(alignment: .center, spacing: 5.0)
+        VStack(alignment: .center, spacing: 1.0)
         {
             if let _ = myweather.theweather?.currentWeather
             {
@@ -30,7 +30,7 @@ struct PrecipBlock: View
                         .foregroundColor(settings.symbolColor)
                     Text("Precipitation")
                         .foregroundColor(settings.titleColor)
-                        .font(.title2)
+                        .font(settings.headingFont)
                 }
                 
                 
@@ -49,8 +49,8 @@ struct PrecipBlock: View
                     
             }
         }
-        .padding()
-        .font(.title3)
+        .padding(.init(settings.blockPadding))
+        .font(settings.mainFont)
         .foregroundColor(settings.tintColor)
         .background(settings.blockColor)
         .cornerRadius(15)

@@ -56,11 +56,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE60DABA2925D97D00D800E1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AE9391C82860E2E7002ED6AE = {
 			isa = PBXGroup;
 			children = (
 				AE9391D32860E2E7002ED6AE /* Weather */,
 				AE9391D22860E2E7002ED6AE /* Products */,
+				AE60DABA2925D97D00D800E1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -317,7 +325,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Weather/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "Weather/Preview\\ Content";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = ZYF5X8SV2F;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -353,7 +361,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Weather/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "Weather/Preview\\ Content";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = ZYF5X8SV2F;
 				ENABLE_HARDENED_RUNTIME = YES;
