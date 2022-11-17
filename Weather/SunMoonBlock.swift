@@ -22,7 +22,7 @@ struct SunMoonBlock: View
             {
                 let daily = myweather.theweather?.dailyForecast[0]
                 
-                HStack(spacing:1.0)
+                HStack(spacing:10.0)
                 {
                     Image(systemName: "sun.max")
                         .imageScale(.medium)
