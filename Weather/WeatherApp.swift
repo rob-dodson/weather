@@ -32,7 +32,7 @@ struct WeatherApp: App
     {
         MenuBarExtra("Weather", systemImage: "cloud.sun.fill")
         {
-            HStack
+            VStack
             {
                  ContentView(myweather: myweather).environmentObject(Settings())
             }

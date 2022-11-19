@@ -9,6 +9,22 @@ import Foundation
 import SwiftUI
 import Combine
 
+
+struct Theme : Identifiable
+{
+    var name: String
+    var colors : Dictionary<String,Color>
+    var id : UUID
+    
+    init(name: String, colors:Dictionary<String,Color>)
+    {
+        self.name = name
+        self.id = UUID()
+        self.colors = colors
+    }
+}
+
+
 class Settings: Combine.ObservableObject
 {
     var tintColor : Color
@@ -16,14 +32,9 @@ class Settings: Combine.ObservableObject
     var titleColor : Color
     var topTitleColor : Color
     var blockColor : Color
+    var themes : [Theme]
     
-    let colors: [String] =
-    ["#bbbbbb",
-    "#03a3ff",
-    "#ff5f03",
-    "#03a3ff",
-    "#000000"]
-    
+    var prefsBlockColor = Color(red: 0.2, green: 0.2, blue: 0.2)
     
     let hugeFont = Font.system(size: 40,weight: .bold)
     let titleFont = Font.system(size: 35.0)
@@ -35,11 +46,31 @@ class Settings: Combine.ObservableObject
     
     init()
     {
-        tintColor = Color(hex:colors[0])
-        symbolColor = Color(hex:colors[1])
-        titleColor = Color(hex:colors[2])
-        topTitleColor = Color(hex:colors[3])
-        blockColor = Color(hex:colors[4])
+        themes = Array<Theme>()
+        
+        let colors = ["tintColor":Color(hex:"#bbbbbb"),
+            "symbolColor":Color(hex:"#03a3ff"),
+            "topTitleColor":Color(hex:"#03a3ff"),
+            "blockColor":Color(hex:"#000000"),
+            "titleColor":Color(hex:"#ff5f03")]
+        
+        let theme = Theme(name: "default", colors: colors)
+        themes.append(theme)
+        
+        let colors2 = ["tintColor":Color(hex:"#bbbbbb"),
+            "symbolColor":Color(hex:"#03a3ff"),
+            "topTitleColor":Color(hex:"#03a3ff"),
+            "blockColor":Color(hex:"#000000"),
+            "titleColor":Color(hex:"#ff5f03")]
+        
+        let theme2 = Theme(name: "default", colors: colors2)
+        themes.append(theme2)
+        
+        tintColor = theme.colors["tintColor"]!
+        symbolColor = theme.colors["symbolColor"]!
+        titleColor = theme.colors["titleColor"]!
+        topTitleColor = theme.colors["topTitleColor"]!
+        blockColor = theme.colors["blockColor"]!
     }
 }
 
@@ -56,9 +87,9 @@ extension Color
         scanner.scanHexInt64(&rgb)
         
         self.init(
-            red:   CGFloat((rgb & 0xFF0000) >> 16)/255.0,
-            green: CGFloat((rgb &   0xFF00) >>  8)/255.0,
-            blue:  CGFloat((rgb &     0xFF)      )/255.0)
+            red:   CGFloat((rgb & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgb &   0xFF00) >>  8) / 255.0,
+            blue:  CGFloat((rgb &     0xFF)      ) / 255.0)
     }
 }
    

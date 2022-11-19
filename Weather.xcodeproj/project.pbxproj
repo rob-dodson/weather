@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE60DAC329280E9300D800E1 /* Prefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE60DAC229280E9300D800E1 /* Prefs.swift */; };
 		AE9391D52860E2E7002ED6AE /* WeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9391D42860E2E7002ED6AE /* WeatherApp.swift */; };
 		AE9391D72860E2E7002ED6AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9391D62860E2E7002ED6AE /* ContentView.swift */; };
 		AE9391D92860E2E7002ED6AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE9391D82860E2E7002ED6AE /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE60DAC229280E9300D800E1 /* Prefs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prefs.swift; sourceTree = "<group>"; };
 		AE9391D12860E2E7002ED6AE /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE9391D42860E2E7002ED6AE /* WeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp.swift; sourceTree = "<group>"; };
 		AE9391D62860E2E7002ED6AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,10 +85,12 @@
 		AE9391D32860E2E7002ED6AE /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				AE9391D42860E2E7002ED6AE /* WeatherApp.swift */,
 				AE9391E32860E5D2002ED6AE /* MyWeather.swift */,
 				AECC3D85291C95E900DC0636 /* Location.swift */,
 				AECC3D542918572C00DC0636 /* Settings.swift */,
 				AE9391D62860E2E7002ED6AE /* ContentView.swift */,
+				AE60DAC229280E9300D800E1 /* Prefs.swift */,
 				AECC3D4E291824CF00DC0636 /* TemperatureBlock.swift */,
 				AECC3D502918283D00DC0636 /* WindBlock.swift */,
 				AECC3D5229182A4E00DC0636 /* PercipBlock.swift */,
@@ -95,7 +99,6 @@
 				AECC3D81291C612F00DC0636 /* HumidityBlock.swift */,
 				AEAB0E0D291EB98A00F221B6 /* DayForecastBlock.swift */,
 				AEAB0E0F291F11FA00F221B6 /* HourForecastBlock.swift */,
-				AE9391D42860E2E7002ED6AE /* WeatherApp.swift */,
 				AE9391D82860E2E7002ED6AE /* Assets.xcassets */,
 				AE9391DD2860E2E7002ED6AE /* Weather.entitlements */,
 				AE9391DA2860E2E7002ED6AE /* Preview Content */,
@@ -182,6 +185,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE60DAC329280E9300D800E1 /* Prefs.swift in Sources */,
 				AECC3D82291C612F00DC0636 /* HumidityBlock.swift in Sources */,
 				AECC3D86291C95E900DC0636 /* Location.swift in Sources */,
 				AECC3D5329182A4E00DC0636 /* PercipBlock.swift in Sources */,
