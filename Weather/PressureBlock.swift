@@ -24,13 +24,13 @@ struct PressureBlock: View
                 {
                     Image(systemName: "gauge.medium")
                         .imageScale(.medium)
-                        .foregroundColor(settings.symbolColor)
+                        .foregroundColor(settings.theme.symbolColor)
                     
                     Text("Pressure")
                         .font(settings.headingFont)
-                        .foregroundColor(settings.titleColor)
+                        .foregroundColor(settings.theme.headerColor)
                 }
-                .foregroundColor(settings.tintColor)
+                .foregroundColor(settings.theme.textColor)
                 
                 HStack
                 {
@@ -45,31 +45,31 @@ struct PressureBlock: View
                         case .falling:
                             Image(systemName:"arrow.down.right")
                                 .imageScale(.medium)
-                                .foregroundColor(settings.symbolColor)
+                                .foregroundColor(settings.theme.symbolColor)
                         case .rising:
                             Image(systemName:"arrow.up.right")
                                 .imageScale(.medium)
-                                .foregroundColor(settings.symbolColor)
+                                .foregroundColor(settings.theme.symbolColor)
                         case .steady:
                             Image(systemName:"arrow.right")
                                 .imageScale(.medium)
-                                .foregroundColor(settings.symbolColor)
+                                .foregroundColor(settings.theme.symbolColor)
                         default:
                             Image(systemName:"questionmark")
                                 .imageScale(.medium)
-                                .foregroundColor(settings.symbolColor)
+                                .foregroundColor(settings.theme.symbolColor)
                         }
                         
                         Text("\(current.pressureTrend.description)")
                     }
                 }
-                .foregroundColor(settings.tintColor)
+                .foregroundColor(settings.theme.textColor)
                 .font(settings.mainFont)
                         
             }
         }
         .padding(.init(settings.blockPadding))
-        .background(settings.blockColor)
+        .background(settings.theme.blockColor)
         .cornerRadius(15)
         .opacity(60.0)
     }

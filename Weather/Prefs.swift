@@ -24,25 +24,29 @@ struct Prefs: View
             
             VStack
             {
-                ForEach(settings.themes)
-                { theme in
+                ForEach(0 ..< settings.themes.count)
+                { index in
+                    
                     HStack
                     {
-                        Rectangle()
-                            .fill(theme.colors["tintColor"]!)
-                            .frame(width: themesize, height: themesize)
-                        Rectangle()
-                            .fill(theme.colors["symbolColor"]!)
-                            .frame(width: themesize, height: themesize)
-                        Rectangle()
-                            .fill(theme.colors["titleColor"]!)
-                            .frame(width: themesize, height: themesize)
-                        Rectangle()
-                            .fill(theme.colors["topTitleColor"]!)
-                            .frame(width: themesize, height: themesize)
-                        Rectangle()
-                            .fill(theme.colors["blockColor"]!)
-                            .frame(width: themesize, height: themesize)
+                        Button
+                        {
+                            print("button")
+                        }
+                        label:
+                        {
+                            Image(systemName: "checkmark")
+                        }
+
+                        Text(settings.themes[index].name)
+                        
+                        let colors  = Array(settings.themes[index].colors)
+                        ForEach(colors.indices)
+                        { idx in
+                            Rectangle()
+                                .fill(colors[idx].value)
+                                .frame(width: themesize, height: themesize)
+                        }
                     }
                 }
                 
@@ -52,7 +56,7 @@ struct Prefs: View
         .frame(width: 300, height: 300)
         .padding()
         .font(settings.mainFont)
-        .foregroundColor(settings.tintColor)
+        .foregroundColor(settings.theme.textColor)
         .background(settings.prefsBlockColor)
         .cornerRadius(15)
         .opacity(60.0)

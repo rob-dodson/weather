@@ -24,13 +24,13 @@ struct HumidityBlock: View
                 {
                     Image(systemName: "humidity")
                         .imageScale(.medium)
-                        .foregroundColor(settings.symbolColor)
+                        .foregroundColor(settings.theme.symbolColor)
                     
                     Text("Humidity")
                         .font(.title2)
-                        .foregroundColor(settings.titleColor)
+                        .foregroundColor(settings.theme.headerColor)
                 }
-                .foregroundColor(settings.tintColor)
+                .foregroundColor(settings.theme.textColor)
                 
                 HStack
                 {
@@ -40,13 +40,13 @@ struct HumidityBlock: View
                     Text("dew point  \(current.dewPoint.converted(to: .fahrenheit).formatted())")
                     Text("visibility \(current.visibility.converted(to: .miles).formatted())")
                 }
-                .foregroundColor(settings.tintColor)
+                .foregroundColor(settings.theme.textColor)
                 .font(.title3)
                         
             }
         }
         .padding(.init(settings.blockPadding))
-        .background(settings.blockColor)
+        .background(settings.theme.blockColor)
         .cornerRadius(15)
         .opacity(60.0)
     }

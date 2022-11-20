@@ -23,10 +23,10 @@ struct WindBlock: View
                 {
                     Image(systemName: "wind")
                         .imageScale(.medium)
-                        .foregroundColor(settings.symbolColor)
+                        .foregroundColor(settings.theme.symbolColor)
                     
                     Text("Wind")
-                        .foregroundColor(settings.titleColor)
+                        .foregroundColor(settings.theme.headerColor)
                         .font(settings.headingFont)
                 }
                 
@@ -41,8 +41,8 @@ struct WindBlock: View
             }
         }
         .padding(.init(settings.blockPadding))
-        .foregroundColor(settings.tintColor)
-        .background(settings.blockColor)
+        .foregroundColor(settings.theme.textColor)
+        .background(settings.theme.blockColor)
         .cornerRadius(15)
         .opacity(60.0)
     }

@@ -20,7 +20,7 @@ struct ContentView: View
             VStack (alignment:.center,spacing:15.0)
             {
                 Text("Weather")
-                    .foregroundColor(settings.topTitleColor)
+                    .foregroundColor(settings.theme.titleColor)
                     .font(settings.hugeFont)
                 
                 Rectangle()
@@ -56,7 +56,7 @@ struct ContentView: View
                 .padding(settings.blockPadding)
                 .font(settings.mainFont)
                 .foregroundColor(Color.gray)
-                .background(settings.blockColor)
+                .background(settings.theme.blockColor)
             }
             
             if $showPrefs.wrappedValue

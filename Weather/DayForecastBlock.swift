@@ -25,10 +25,10 @@ struct DayForecastBlock: View
                 {
                     Image(systemName: "chart.xyaxis.line")
                         .imageScale(.medium)
-                        .foregroundColor(settings.symbolColor)
+                        .foregroundColor(settings.theme.symbolColor)
                     
                     Text("Ten Day Forecast")
-                        .foregroundColor(settings.titleColor)
+                        .foregroundColor(settings.theme.headerColor)
                         .font(settings.headingFont)
                 }
                 
@@ -42,7 +42,7 @@ struct DayForecastBlock: View
                         {
                             Image(systemName: "\(day.symbolName)")
                                 .imageScale(.medium)
-                                .foregroundColor(settings.symbolColor)
+                                .foregroundColor(settings.theme.symbolColor)
                                 .frame(width: 20.0,height: 20.0,alignment: .center)
                             
                             if day.date.formatted(date: .abbreviated, time: .omitted) == Date.now.formatted(date: .abbreviated, time: .omitted)
@@ -57,7 +57,7 @@ struct DayForecastBlock: View
                         }
                     }
                 }
-                .foregroundColor(settings.tintColor)
+                .foregroundColor(settings.theme.textColor)
                 .font(settings.mainFont)
                 
                 let newdailies = convert(oldweatherdata:dailies)
@@ -71,15 +71,15 @@ struct DayForecastBlock: View
                 }
                 .frame(width:370,height:100)
                 .chartForegroundStyleScale([
-                    "High Temp" : Color.green,
-                    "Low Temp" : Color.blue,
-                    "Wind" : Color.pink,
-                    "Precip Chance" : Color.yellow
+                    "High Temp" : settings.theme.hitempColor,
+                    "Low Temp" : settings.theme.lowtempColor,
+                    "Wind" : settings.theme.windColor,
+                    "Precip Chance" : settings.theme.precipColor
                 ])
             }
         }
         .padding()
-        .background(settings.blockColor)
+        .background(settings.theme.blockColor)
         .cornerRadius(15)
         .opacity(60.0)
     }

@@ -15,6 +15,7 @@ struct TemperatureBlock: View
     @ObservedObject var myweather: MyWeather
     @EnvironmentObject var settings: Settings
     
+    
     var body: some View
     {
         VStack(alignment: .center, spacing: 1.0)
@@ -25,11 +26,11 @@ struct TemperatureBlock: View
                 {
                     Image(systemName: current.symbolName)
                         .imageScale(.large)
-                        .foregroundColor(settings.symbolColor)
+                        .foregroundColor(settings.theme.symbolColor)
                     
                     Text("\(myweather.place)")
                         .font(settings.titleFont)
-                        .foregroundColor(settings.titleColor)
+                        .foregroundColor(settings.theme.headerColor)
                 }
                 
                 Text("\(current.date.formatted())")
@@ -61,8 +62,8 @@ struct TemperatureBlock: View
         }
         .padding(.init(settings.blockPadding))
         .font(settings.mainFont)
-        .foregroundColor(settings.tintColor)
-        .background(settings.blockColor)
+        .foregroundColor(settings.theme.textColor)
+        .background(settings.theme.blockColor)
         .cornerRadius(15)
         .opacity(60.0)
     }

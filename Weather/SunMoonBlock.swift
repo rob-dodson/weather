@@ -26,15 +26,15 @@ struct SunMoonBlock: View
                 {
                     Image(systemName: "sun.max")
                         .imageScale(.medium)
-                        .foregroundColor(settings.symbolColor)
+                        .foregroundColor(settings.theme.symbolColor)
                     Image(systemName: "moon")
                         .imageScale(.medium)
-                        .foregroundColor(settings.symbolColor)
+                        .foregroundColor(settings.theme.symbolColor)
                     Text("Sun & Moon")
-                        .foregroundColor(settings.titleColor)
+                        .foregroundColor(settings.theme.headerColor)
                         .font(settings.headingFont)
                 }
-                .foregroundColor(settings.tintColor)
+                .foregroundColor(settings.theme.textColor)
                 
                 if let sun = daily?.sun
                 {
@@ -48,7 +48,7 @@ struct SunMoonBlock: View
                             {
                                 Image(systemName: "arrow.up")
                                     .imageScale(.small)
-                                    .foregroundColor(settings.symbolColor)
+                                    .foregroundColor(settings.theme.symbolColor)
                                 
                                 if let sunrise = sun.sunrise
                                 {
@@ -61,7 +61,7 @@ struct SunMoonBlock: View
                             {
                                 Image(systemName: "arrow.down")
                                     .imageScale(.small)
-                                    .foregroundColor(settings.symbolColor)
+                                    .foregroundColor(settings.theme.symbolColor)
                                 
                                 if let sunset = sun.sunset
                                 {
@@ -73,7 +73,7 @@ struct SunMoonBlock: View
                             Text("UV: \(current.uvIndex.category.description)")
                                 .font(settings.smallFont)
                         }
-                        .foregroundColor(settings.tintColor)
+                        .foregroundColor(settings.theme.textColor)
                         .font(settings.mainFont)
                         
                         if let moon = daily?.moon
@@ -86,7 +86,7 @@ struct SunMoonBlock: View
                                 {
                                     Image(systemName: "arrow.up")
                                         .imageScale(.small)
-                                        .foregroundColor(settings.symbolColor)
+                                        .foregroundColor(settings.theme.symbolColor)
                                     
                                     if let moonrise = moon.moonrise
                                     {
@@ -99,7 +99,7 @@ struct SunMoonBlock: View
                                 {
                                     Image(systemName: "arrow.down")
                                         .imageScale(.small)
-                                        .foregroundColor(settings.symbolColor)
+                                        .foregroundColor(settings.theme.symbolColor)
                                     
                                     if let moonset = moon.moonset
                                     {
@@ -113,9 +113,9 @@ struct SunMoonBlock: View
                                 
                                 Image(systemName: moon.phase.symbolName)
                                     .imageScale(.small)
-                                    .foregroundColor(settings.symbolColor)
+                                    .foregroundColor(settings.theme.symbolColor)
                             }
-                            .foregroundColor(settings.tintColor)
+                            .foregroundColor(settings.theme.textColor)
                             .font(settings.mainFont)
                         }
                     }
@@ -123,7 +123,7 @@ struct SunMoonBlock: View
             }
         }
         .padding(.init(settings.blockPadding))
-        .background(settings.blockColor)
+        .background(settings.theme.blockColor)
         .cornerRadius(15)
         .opacity(60.0)
     }

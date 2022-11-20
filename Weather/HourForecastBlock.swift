@@ -26,11 +26,11 @@ struct HourForecastBlock: View
                 {
                     Image(systemName: "chart.xyaxis.line")
                         .imageScale(.medium)
-                        .foregroundColor(settings.symbolColor)
+                        .foregroundColor(settings.theme.symbolColor)
                         .frame(width: 20.0,height: 20.0,alignment: .center)
                     
                     Text("Hourly Forecast")
-                        .foregroundColor(settings.titleColor)
+                        .foregroundColor(settings.theme.headerColor)
                         .font(.title2)
                 }
                 
@@ -47,14 +47,14 @@ struct HourForecastBlock: View
                             {
                                 Image(systemName: "\(hour.symbolName)")
                                     .imageScale(.medium)
-                                    .foregroundColor(settings.symbolColor)
+                                    .foregroundColor(settings.theme.symbolColor)
                                 
                                 Text("\(hour.date.formatted(Date.FormatStyle().hour()))")
                             }
                         }
                     }
                 }
-                .foregroundColor(settings.tintColor)
+                .foregroundColor(settings.theme.textColor)
                 .font(settings.mainFont)
                 
                 let newhours = convert(oldweatherdata:hours)
@@ -68,14 +68,14 @@ struct HourForecastBlock: View
                 }
                 .frame(width:370,height:100)
                 .chartForegroundStyleScale([
-                    "Temp" : Color.green,
-                    "Wind" : Color.pink,
-                    "Precip Chance" : Color.yellow
+                    "Temp" : settings.theme.hitempColor,
+                    "Wind" : settings.theme.windColor,
+                    "Precip Chance" : settings.theme.precipColor
                 ])
             }
         }
         .padding()
-        .background(settings.blockColor)
+        .background(settings.theme.blockColor)
         .cornerRadius(15)
         .opacity(60.0)
     }

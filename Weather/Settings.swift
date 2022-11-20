@@ -12,6 +12,29 @@ import Combine
 
 struct Theme : Identifiable
 {
+    enum colorName : String
+    {
+        case text = "text"
+        case symbol = "symbol"
+        case block = "block"
+        case title = "title"
+        case header = "header"
+        case wind = "wind"
+        case precip = "percip"
+        case hitemp = "hitemp"
+        case lowtemp = "lowtemp"
+    }
+    
+    var textColor : Color
+    var symbolColor : Color
+    var headerColor : Color
+    var titleColor : Color
+    var blockColor : Color
+    var windColor : Color
+    var precipColor : Color
+    var hitempColor : Color
+    var lowtempColor : Color
+    
     var name: String
     var colors : Dictionary<String,Color>
     var id : UUID
@@ -21,18 +44,29 @@ struct Theme : Identifiable
         self.name = name
         self.id = UUID()
         self.colors = colors
+        
+        self.textColor = colors[colorName.text.rawValue] ?? Color.gray
+        self.symbolColor = colors[colorName.symbol.rawValue] ?? Color.blue
+        self.headerColor = colors[colorName.header.rawValue] ?? Color.white
+        self.titleColor = colors[colorName.title.rawValue] ?? Color.white
+        self.blockColor = colors[colorName.block.rawValue] ?? Color.black
+        self.windColor = colors[colorName.wind.rawValue] ?? Color.red
+        self.precipColor = colors[colorName.precip.rawValue] ?? Color.blue
+        self.hitempColor = colors[colorName.hitemp.rawValue] ?? Color.green
+        self.lowtempColor = colors[colorName.lowtemp.rawValue] ?? Color.yellow
+    }
+    
+    func color(name:colorName) -> Color
+    {
+        return colors[name.rawValue] ?? Color.white
     }
 }
 
 
 class Settings: Combine.ObservableObject
 {
-    var tintColor : Color
-    var symbolColor : Color
-    var titleColor : Color
-    var topTitleColor : Color
-    var blockColor : Color
     var themes : [Theme]
+    var theme : Theme
     
     var prefsBlockColor = Color(red: 0.2, green: 0.2, blue: 0.2)
     
@@ -48,29 +82,25 @@ class Settings: Combine.ObservableObject
     {
         themes = Array<Theme>()
         
-        let colors = ["tintColor":Color(hex:"#bbbbbb"),
-            "symbolColor":Color(hex:"#03a3ff"),
-            "topTitleColor":Color(hex:"#03a3ff"),
-            "blockColor":Color(hex:"#000000"),
-            "titleColor":Color(hex:"#ff5f03")]
+        let colors = [Theme.colorName.text.rawValue:Color(hex:"#bbbbbb"),
+                      Theme.colorName.symbol.rawValue:Color(hex:"#03a3ff"),
+                      Theme.colorName.title.rawValue:Color(hex:"#03a3ff"),
+                      Theme.colorName.block.rawValue:Color(hex:"#000000"),
+                      Theme.colorName.header.rawValue:Color(hex:"#ff9636")]
         
-        let theme = Theme(name: "default", colors: colors)
-        themes.append(theme)
+        let theme1 = Theme(name: "Hyper", colors: colors)
+        themes.append(theme1)
         
-        let colors2 = ["tintColor":Color(hex:"#bbbbbb"),
-            "symbolColor":Color(hex:"#03a3ff"),
-            "topTitleColor":Color(hex:"#03a3ff"),
-            "blockColor":Color(hex:"#000000"),
-            "titleColor":Color(hex:"#ff5f03")]
+        let colors2 = [Theme.colorName.text.rawValue:Color(hex:"#738fa7"),
+                       Theme.colorName.symbol.rawValue:Color(hex:"#0c4160"),
+                       Theme.colorName.title.rawValue:Color(hex:"#3ceda"),
+                       Theme.colorName.block.rawValue:Color(hex:"#071330"),
+                       Theme.colorName.header.rawValue:Color(hex:"#3ceda")]
         
-        let theme2 = Theme(name: "default", colors: colors2)
+        let theme2 = Theme(name: "Serious", colors: colors2)
         themes.append(theme2)
-        
-        tintColor = theme.colors["tintColor"]!
-        symbolColor = theme.colors["symbolColor"]!
-        titleColor = theme.colors["titleColor"]!
-        topTitleColor = theme.colors["topTitleColor"]!
-        blockColor = theme.colors["blockColor"]!
+
+        theme = theme1
     }
 }
 
