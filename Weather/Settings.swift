@@ -50,10 +50,10 @@ struct Theme : Identifiable
         self.headerColor = colors[colorName.header.rawValue] ?? Color.white
         self.titleColor = colors[colorName.title.rawValue] ?? Color.white
         self.blockColor = colors[colorName.block.rawValue] ?? Color.black
-        self.windColor = colors[colorName.wind.rawValue] ?? Color.red
-        self.precipColor = colors[colorName.precip.rawValue] ?? Color.blue
+        self.windColor = colors[colorName.wind.rawValue] ?? Color.pink
+        self.precipColor = colors[colorName.precip.rawValue] ?? Color.yellow
         self.hitempColor = colors[colorName.hitemp.rawValue] ?? Color.green
-        self.lowtempColor = colors[colorName.lowtemp.rawValue] ?? Color.yellow
+        self.lowtempColor = colors[colorName.lowtemp.rawValue] ?? Color.blue
     }
     
     func color(name:colorName) -> Color
@@ -70,11 +70,14 @@ class Settings: Combine.ObservableObject
     
     var prefsBlockColor = Color(red: 0.2, green: 0.2, blue: 0.2)
     
-    let hugeFont = Font.system(size: 40,weight: .bold)
-    let titleFont = Font.system(size: 35.0)
-    let headingFont = Font.system(size: 18.0)
-    let mainFont = Font.system(size: 15.0)
-    let smallFont = Font.system(size: 10.0)
+    let fontsize = 40.0
+    
+    let hugeFont : Font
+    let titleFont : Font
+    let headingFont : Font
+    let mainFont : Font
+    let smallFont : Font
+    let screen = NSScreen()
     
     let blockPadding = 8.0
     
@@ -82,13 +85,13 @@ class Settings: Combine.ObservableObject
     {
         themes = Array<Theme>()
         
-        let colors = [Theme.colorName.text.rawValue:Color(hex:"#bbbbbb"),
+        let colors1 = [Theme.colorName.text.rawValue:Color(hex:"#bbbbbb"),
                       Theme.colorName.symbol.rawValue:Color(hex:"#03a3ff"),
                       Theme.colorName.title.rawValue:Color(hex:"#03a3ff"),
                       Theme.colorName.block.rawValue:Color(hex:"#000000"),
                       Theme.colorName.header.rawValue:Color(hex:"#ff9636")]
         
-        let theme1 = Theme(name: "Hyper", colors: colors)
+        let theme1 = Theme(name: "Hyper", colors: colors1)
         themes.append(theme1)
         
         let colors2 = [Theme.colorName.text.rawValue:Color(hex:"#738fa7"),
@@ -101,6 +104,12 @@ class Settings: Combine.ObservableObject
         themes.append(theme2)
 
         theme = theme1
+        
+         hugeFont = Font.system(size: fontsize,weight: .bold)
+         titleFont = Font.system(size: fontsize - 5.0)
+         headingFont = Font.system(size: fontsize - 22.0)
+         mainFont = Font.system(size: fontsize - 25.0)
+         smallFont = Font.system(size: fontsize - 30.0)
     }
 }
 

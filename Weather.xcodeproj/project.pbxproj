@@ -85,8 +85,8 @@
 		AE9391D32860E2E7002ED6AE /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				AE9391D42860E2E7002ED6AE /* WeatherApp.swift */,
 				AE9391E32860E5D2002ED6AE /* MyWeather.swift */,
+				AE9391D42860E2E7002ED6AE /* WeatherApp.swift */,
 				AECC3D85291C95E900DC0636 /* Location.swift */,
 				AECC3D542918572C00DC0636 /* Settings.swift */,
 				AE9391D62860E2E7002ED6AE /* ContentView.swift */,
