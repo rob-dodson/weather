@@ -63,10 +63,11 @@ struct Theme : Identifiable
 }
 
 
-class Settings: Combine.ObservableObject
+class Settings: ObservableObject
 {
+    @Published var theme : Theme
+            
     var themes : [Theme]
-    var theme : Theme
     
     var prefsBlockColor = Color(red: 0.2, green: 0.2, blue: 0.2)
     
@@ -94,11 +95,11 @@ class Settings: Combine.ObservableObject
         let theme1 = Theme(name: "Hyper", colors: colors1)
         themes.append(theme1)
         
-        let colors2 = [Theme.colorName.text.rawValue:Color(hex:"#738fa7"),
-                       Theme.colorName.symbol.rawValue:Color(hex:"#0c4160"),
-                       Theme.colorName.title.rawValue:Color(hex:"#3ceda"),
-                       Theme.colorName.block.rawValue:Color(hex:"#071330"),
-                       Theme.colorName.header.rawValue:Color(hex:"#3ceda")]
+        let colors2 = [Theme.colorName.block.rawValue:Color(hex:  "#164f55"),
+                       Theme.colorName.symbol.rawValue:Color(hex: "#7fb9c2"),
+                       Theme.colorName.title.rawValue:Color(hex:  "#e7f0ed"),
+                       Theme.colorName.header.rawValue:Color(hex: "#95acb2"),
+                       Theme.colorName.text.rawValue:Color(hex:   "#628ca6")]
         
         let theme2 = Theme(name: "Serious", colors: colors2)
         themes.append(theme2)

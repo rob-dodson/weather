@@ -9,49 +9,63 @@ import SwiftUI
 
 struct Prefs: View
 {
-    @EnvironmentObject var settings: Settings
+    @ObservedObject var settings: Settings
     
     let themesize = 20.0
     
     var body: some View
     {
-        VStack
+        
+        
+        VStack(spacing: 100)
         {
             Text("Settings")
-                .frame(alignment:.top)
+                .frame(alignment:.topLeading)
             
-            Text("Themes")
             
-            VStack
+            VStack (alignment:.leading)
             {
+                Text("Themes")
+                    .frame(alignment:.topLeading)
+                
                 ForEach(0 ..< settings.themes.count)
                 { index in
                     
-                    HStack
+                    HStack(alignment: .center)
                     {
-                        Button
+                        Button()
                         {
-                            print("button")
+                            pickTheme(index:index)
+                          
                         }
                         label:
                         {
-                            Image(systemName: "checkmark")
+                            if settings.themes[index].name == settings.theme.name
+                            {
+                                Image(systemName: "checkmark")
+                            }
+                            else
+                            {
+                                Image(systemName: "circle")
+                            }
                         }
-
-                        Text(settings.themes[index].name)
+                        .buttonStyle(.plain)
+                        .frame(alignment: .leading)
                         
-                        let colors  = Array(settings.themes[index].colors)
-                        ForEach(colors.indices)
-                        { idx in
-                            Rectangle()
-                                .fill(colors[idx].value)
-                                .frame(width: themesize, height: themesize)
+                        Text(settings.themes[index].name)
+                                
+                        let theme = settings.themes[index]
+                        HStack()
+                        {
+                            Rectangle().fill(theme.blockColor).frame(width: themesize, height: themesize)
+                            Rectangle().fill(theme.headerColor).frame(width: themesize, height: themesize)
+                            Rectangle().fill(theme.symbolColor).frame(width: themesize, height: themesize)
+                            Rectangle().fill(theme.textColor).frame(width: themesize, height: themesize)
+                            Rectangle().fill(theme.titleColor).frame(width: themesize, height: themesize)
                         }
                     }
                 }
-                
             }
-            
         }
         .frame(width: 300, height: 300)
         .padding()
@@ -62,4 +76,8 @@ struct Prefs: View
         .opacity(60.0)
     }
    
+    func pickTheme(index:Int)
+    {
+        settings.theme = settings.themes[index]
+    }
 }

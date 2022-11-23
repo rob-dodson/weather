@@ -11,7 +11,7 @@ import WeatherKit
 struct HumidityBlock: View
 {
     @ObservedObject var myweather: MyWeather
-    @EnvironmentObject var settings: Settings
+    @ObservedObject var settings: Settings
 
     
     var body: some View

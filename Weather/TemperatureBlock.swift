@@ -13,7 +13,7 @@ import WeatherKit
 struct TemperatureBlock: View
 {
     @ObservedObject var myweather: MyWeather
-    @EnvironmentObject var settings: Settings
+    @ObservedObject var settings: Settings
     
     
     var body: some View
@@ -54,10 +54,10 @@ struct TemperatureBlock: View
 
             VStack(alignment: .center, spacing: 5.0)
             {
-                PrecipBlock(myweather: myweather)
-                PressureBlock(myweather: myweather)
-                WindBlock(myweather: myweather)
-                SunMoonBlock(myweather: myweather)
+                PrecipBlock(myweather: myweather,settings: settings)
+                PressureBlock(myweather: myweather,settings: settings)
+                WindBlock(myweather: myweather,settings: settings)
+                SunMoonBlock(myweather: myweather,settings: settings)
             }
         }
         .padding(.init(settings.blockPadding))
