@@ -65,7 +65,9 @@ struct HourForecastBlock: View
                         y: .value("Val", $0.val)
                     )
                     .foregroundStyle(by: .value("type", $0.type))
+                    .interpolationMethod(.cardinal)
                 }
+                
                 .frame(width:370,height:100)
                 .chartForegroundStyleScale([
                     "Temp" : settings.theme.hitempColor,
