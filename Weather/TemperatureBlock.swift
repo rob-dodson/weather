@@ -55,6 +55,7 @@ struct TemperatureBlock: View
             VStack(alignment: .center, spacing: 5.0)
             {
                 PrecipBlock(myweather: myweather,settings: settings)
+                HumidityBlock(myweather: myweather, settings: settings)
                 PressureBlock(myweather: myweather,settings: settings)
                 WindBlock(myweather: myweather,settings: settings)
                 SunMoonBlock(myweather: myweather,settings: settings)

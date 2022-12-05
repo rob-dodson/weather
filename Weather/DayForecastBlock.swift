@@ -86,7 +86,7 @@ struct DayForecastBlock: View
                         AxisValueLabel().foregroundStyle(settings.theme.textColor)
                     }
                 }
-                .frame(width:370,height:100)
+                .frame(width:420,height:100)
                 .chartForegroundStyleScale([
                     "High Temp" : settings.theme.hitempColor,
                     "Low Temp" : settings.theme.lowtempColor,

@@ -27,7 +27,6 @@ struct ContentView: View
                 
                 ScrollView(showsIndicators: false)
                 {
-                    
                     VStack (alignment:.center,spacing:15.0)
                     {
                         TemperatureBlock(myweather: myweather,settings: settings)
@@ -35,7 +34,7 @@ struct ContentView: View
                         DayForecastBlock(myweather: myweather,settings: settings)
                     }
                 }
-                .frame(width: 475,height: CGFloat.minimum(950,((NSScreen.main?.frame.height)!) - 200.0),alignment: .center)
+                .frame(width: 475,height: CGFloat.minimum(970,((NSScreen.main?.frame.height)!) - 200.0),alignment: .center)
                 
                 HStack(spacing: 370.0)
                 {

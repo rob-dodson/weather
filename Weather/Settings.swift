@@ -86,10 +86,10 @@ class Settings: ObservableObject
     {
         themes = Array<Theme>()
         
-        let colors1 = [Theme.colorName.text.rawValue:Color(hex:"#bbbbbb"),
-                      Theme.colorName.symbol.rawValue:Color(hex:"#03a3ff"),
+        let colors1 = [Theme.colorName.text.rawValue:Color("text1"), //Color(hex:"#bbbbbb"),
+                      Theme.colorName.symbol.rawValue:Color("symbol1"), //Color(hex:"#03a3ff"),
                       Theme.colorName.title.rawValue:Color(hex:"#03a3ff"),
-                      Theme.colorName.block.rawValue:Color(hex:"#000000"),
+                       Theme.colorName.block.rawValue:Color("block1"),   //   Color(hex:"#000000"),
                       Theme.colorName.header.rawValue:Color(hex:"#ff9636")]
         
         let theme1 = Theme(name: "Hyper", colors: colors1)

@@ -83,7 +83,11 @@ struct HourForecastBlock: View
                         AxisValueLabel().foregroundStyle(settings.theme.textColor)
                     }
                 }
-                .frame(width:370,height:100)
+                .chartPlotStyle { plotArea in
+                    plotArea
+                    .background(.blue.opacity(0.3))
+                }
+                .frame(width:420,height:100)
                 .chartForegroundStyleScale([
                     "Temp" : settings.theme.hitempColor,
                     "Wind" : settings.theme.windColor,
