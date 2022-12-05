@@ -67,7 +67,22 @@ struct HourForecastBlock: View
                     .foregroundStyle(by: .value("type", $0.type))
                     .interpolationMethod(.cardinal)
                 }
-                
+                .chartYAxis
+                {
+                    AxisMarks(values: .automatic)
+                    { _ in
+                        AxisGridLine(stroke: .init(lineWidth: 0.5,dash:[2.5,2.5])).foregroundStyle(settings.theme.textColor)
+                        AxisValueLabel().foregroundStyle(settings.theme.textColor)//.offset(x: 10).font(.subheadline)
+                    }
+                }
+                .chartXAxis
+                {
+                    AxisMarks(values: .automatic)
+                    { _ in
+                        AxisGridLine(stroke: .init(lineWidth: 0.5,dash:[2.5,2.5])).foregroundStyle(settings.theme.textColor)
+                        AxisValueLabel().foregroundStyle(settings.theme.textColor)
+                    }
+                }
                 .frame(width:370,height:100)
                 .chartForegroundStyleScale([
                     "Temp" : settings.theme.hitempColor,
