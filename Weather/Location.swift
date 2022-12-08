@@ -50,6 +50,7 @@ class Location : NSObject, CLLocationManagerDelegate
             
         mylocations = locations
         
+        /*
         locations.forEach
         { (location) in
         
@@ -64,6 +65,7 @@ class Location : NSObject, CLLocationManagerDelegate
           print("LocationManager courseAccuracy: \(location.courseAccuracy)") // 13.4
           print("LocationManager course: \(location.course)")
         }
+         */
       }
           
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)

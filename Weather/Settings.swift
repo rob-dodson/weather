@@ -69,6 +69,7 @@ class Settings: ObservableObject
             
     var themes : [Theme]
     
+    
     var prefsBlockColor = Color(red: 0.2, green: 0.2, blue: 0.2)
     
     let fontsize = 40.0
@@ -85,26 +86,21 @@ class Settings: ObservableObject
     init()
     {
         themes = Array<Theme>()
+        let themeNames = ["Hyper","Serious"]
         
-        let colors1 = [Theme.colorName.text.rawValue:Color("text1"), //Color(hex:"#bbbbbb"),
-                      Theme.colorName.symbol.rawValue:Color("symbol1"), //Color(hex:"#03a3ff"),
-                      Theme.colorName.title.rawValue:Color(hex:"#03a3ff"),
-                       Theme.colorName.block.rawValue:Color("block1"),   //   Color(hex:"#000000"),
-                      Theme.colorName.header.rawValue:Color(hex:"#ff9636")]
-        
-        let theme1 = Theme(name: "Hyper", colors: colors1)
-        themes.append(theme1)
-        
-        let colors2 = [Theme.colorName.block.rawValue:Color(hex:  "#164f55"),
-                       Theme.colorName.symbol.rawValue:Color(hex: "#7fb9c2"),
-                       Theme.colorName.title.rawValue:Color(hex:  "#e7f0ed"),
-                       Theme.colorName.header.rawValue:Color(hex: "#95acb2"),
-                       Theme.colorName.text.rawValue:Color(hex:   "#628ca6")]
-        
-        let theme2 = Theme(name: "Serious", colors: colors2)
-        themes.append(theme2)
+        for index in 0..<themeNames.count
+        {
+            let colors = [Theme.colorName.text.rawValue:Color("text\(index)"),
+                           Theme.colorName.symbol.rawValue:Color("symbol\(index)"),
+                           Theme.colorName.title.rawValue:Color("title\(index)"),
+                           Theme.colorName.block.rawValue:Color("block\(index)"),
+                           Theme.colorName.header.rawValue:Color("header\(index)")]
+            
+            let theme = Theme(name: themeNames[index], colors: colors)
+            themes.append(theme)
+        }
 
-        theme = theme1
+        theme = themes[0]
         
          hugeFont = Font.system(size: fontsize,weight: .bold)
          titleFont = Font.system(size: fontsize - 5.0)

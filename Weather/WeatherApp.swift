@@ -36,10 +36,5 @@ struct WeatherApp: App
             ContentView(myweather: myweather,settings: Settings())
         }
         .menuBarExtraStyle(.window)
-        
-            
     }
-    
-    
-    
 }

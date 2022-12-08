@@ -39,8 +39,7 @@ struct PrecipBlock: View
                 {
                     let chance = Int(daily!.precipitationChance * 100)
                     
-                    Text("Chance of \(daily!.precipitation.description )")
-                    Text("\(chance)%")
+                    Text("Chance of \(daily!.precipitation.description): \(chance)%")
                 }
                 else
                 {

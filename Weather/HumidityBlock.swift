@@ -36,9 +36,9 @@ struct HumidityBlock: View
                 {
                     let humidstr = NSString(format:"%.0f", current.humidity * 100)
 
-                    Text("humidity \(humidstr)%")
-                    Text("dew point  \(current.dewPoint.converted(to: .fahrenheit).formatted())")
-                    Text("visibility \(current.visibility.converted(to: .miles).formatted())")
+                    Text("humidity: \(humidstr)%")
+                    Text("dew point:  \(current.dewPoint.converted(to: .fahrenheit).formatted())")
+                    Text("visibility: \(current.visibility.converted(to: .miles).formatted())")
                 }
                 .foregroundColor(settings.theme.textColor)
                 .font(.title3)

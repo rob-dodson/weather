@@ -39,6 +39,7 @@ struct TemperatureBlock: View
                 Text("\(current.temperature.formatted(.measurement(width: .abbreviated)))")
                     .font(settings.titleFont)
                 
+                
                 Text("Feels Like \(current.apparentTemperature.formatted(.measurement(width: .abbreviated)))")
                 
                 if let daily = myweather.theweather?.dailyForecast[0]
